@@ -7,16 +7,17 @@ package model.vo;
  * @author leonardo
  *
  */
-public class RamMemory {
+public class RAMMemory extends Component {
 	private String type, frequency;
 	private int size;
 	/**
+	 * @param priceChanger
 	 * @param type
 	 * @param frequency
 	 * @param size
 	 */
-	public RamMemory(String type, String frequency, int size) {
-		super();
+	public RAMMemory(double priceChanger, String type, String frequency, int size) {
+		super(priceChanger);
 		this.type = type;
 		this.frequency = frequency;
 		this.size = size;
@@ -39,5 +40,5 @@ public class RamMemory {
 	public int getSize() {
 		return size;
 	}
-
+	
 }

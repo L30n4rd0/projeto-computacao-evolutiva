@@ -4,6 +4,7 @@
 package view;
 
 import control.ControlNotebooks;
+import model.vo.Component;
 
 /**
  * @author leonardo
@@ -25,7 +26,7 @@ public class Application {
 //			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-
+		
 	}
 
 }
