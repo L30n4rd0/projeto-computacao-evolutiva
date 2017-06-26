@@ -1,12 +1,12 @@
 /**
  * 
  */
-package control;
+package ufrpe.ppgia.ce.control;
 
 import java.util.List;
 
-import model.RepositoryFactory;
-import model.vo.NotebookVO;
+import ufrpe.ppgia.ce.model.RepositoryFactory;
+import ufrpe.ppgia.ce.vo.NotebookVO;
 
 /**
  * @author leonardo

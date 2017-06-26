@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model;
+package ufrpe.ppgia.ce.model;
 
 /**
  * @author leonardo

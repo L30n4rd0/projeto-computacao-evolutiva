@@ -1,10 +1,9 @@
 /**
  * 
  */
-package view;
+package ufrpe.ppgia.ce.view;
 
-import control.ControlNotebooks;
-import model.vo.Component;
+import ufrpe.ppgia.ce.control.ControlNotebooks;
 
 /**
  * @author leonardo

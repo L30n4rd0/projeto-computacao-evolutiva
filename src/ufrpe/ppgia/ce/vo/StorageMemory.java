@@ -1,13 +1,13 @@
 /**
  * 
  */
-package model.vo;
+package ufrpe.ppgia.ce.vo;
 
 /**
  * @author leonardo
  *
  */
-public class SATA extends Component {
+public class StorageMemory extends Component {
 	private String type, unitMeasure;
 	private int size;
 	/**
@@ -16,7 +16,7 @@ public class SATA extends Component {
 	 * @param unitMeasure
 	 * @param size
 	 */
-	public SATA(double priceChanger, String type, String unitMeasure, int size) {
+	public StorageMemory(double priceChanger, String type, String unitMeasure, int size) {
 		super(priceChanger);
 		this.type = type;
 		this.unitMeasure = unitMeasure;

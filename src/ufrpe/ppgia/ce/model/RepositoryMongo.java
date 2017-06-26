@@ -1,19 +1,28 @@
 /**
  * 
  */
-package model;
+package ufrpe.ppgia.ce.model;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
-import model.vo.NotebookVO;
+import ufrpe.ppgia.ce.vo.NotebookVO;
 
 /**
  * @author leonardo
@@ -79,10 +88,27 @@ public class RepositoryMongo implements InterfaceRepository {
 		while (notebooksCursor.hasNext()) { 
 			Document notebook = notebooksCursor.next();
 			
-			System.out.println(notebook.get("_id"));
+			JsonObject notebookJson = new Gson().fromJson(notebook.toJson(), JsonObject.class);
 			
-			Document price = (Document) notebook.get("prices");
-			System.out.println( ( (Document) notebook.get("prices") ).get("boleto") );
+			JsonArray specificationsJson = notebookJson.get("especifications").getAsJsonArray();
+			
+			for (JsonElement specification : specificationsJson) {
+				
+				System.out.println(specification.getAsJsonObject().get("description"));
+				
+			}
+			
+//			while (specificationsJson.iterator().hasNext()) {
+//				JsonObject specification = (JsonObject) specificationsJson.iterator().next();
+//				
+//				
+//			}
+			
+			
+//			System.out.println(notebook.toJson());
+			
+//			Document price = (Document) notebook.get("prices");
+//			System.out.println( ( (Document) notebook.get("prices") ).get("cartao_credito") );
 			
 			break;
  

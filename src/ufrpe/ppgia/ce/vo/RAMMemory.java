@@ -1,25 +1,25 @@
 /**
  * 
  */
-package model.vo;
+package ufrpe.ppgia.ce.vo;
 
 /**
  * @author leonardo
  *
  */
-public class StorageMemory extends Component {
-	private String type, unitMeasure;
+public class RAMMemory extends Component {
+	private String type, frequency;
 	private int size;
 	/**
 	 * @param priceChanger
 	 * @param type
-	 * @param unitMeasure
+	 * @param frequency
 	 * @param size
 	 */
-	public StorageMemory(double priceChanger, String type, String unitMeasure, int size) {
+	public RAMMemory(double priceChanger, String type, String frequency, int size) {
 		super(priceChanger);
 		this.type = type;
-		this.unitMeasure = unitMeasure;
+		this.frequency = frequency;
 		this.size = size;
 	}
 	/**
@@ -29,10 +29,10 @@ public class StorageMemory extends Component {
 		return type;
 	}
 	/**
-	 * @return the unitMeasure
+	 * @return the frequency
 	 */
-	public String getUnitMeasure() {
-		return unitMeasure;
+	public String getFrequency() {
+		return frequency;
 	}
 	/**
 	 * @return the size

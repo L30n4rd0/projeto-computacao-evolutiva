@@ -1,0 +1,534 @@
+{
+	"_id": 
+	{
+		"$oid": "594142c7454b532b0d794195"
+	},
+
+	"title": "Titanium W155 IRON",
+	"action_product": "LANÇAMENTO",
+	"url": "https://avell.com.br/notebooks/titanium-w155-iron",
+	"especifications": 
+	[
+		{
+			"label": "Descrição Física",
+			"description": 
+			[
+				"- 378mm (w) x 267mm (d) x 24.9mm (h)",
+				"- Peso: 2.5Kg",
+				"- Cor: Preto"
+			]
+		},
+
+		{
+			"label": "Chipset",
+			"description": 
+			[
+				"- Mobile Intel® HM175 Express Chipset"
+			]
+		},
+
+		{
+			"label": "Memória",
+			"description": 
+			[
+				"- 2 SODIMM Slots",
+				"- Suporte para Dual-Channel",
+				"- Tipo de memória:DDR4 2133MHz * ( freqüência de operação real depende FSB do processador )",
+				"- Expansível até 32 GB (Sistema Operacional 32 bit tem uma limitação de memória de 2.8GB no hardware.)"
+			]
+		},
+
+		{
+			"label": "Hard Disk (HD)",
+			"description": 
+			[
+				"- 1 Slot com suporte para HDD/SSD 7mm - SATA interface",
+				"- Suporte SATA m.2",
+				"- Suporte para SSD"
+			]
+		},
+
+		{
+			"label": "Tela (LCD)",
+			"description": 
+			[
+				"- 15.6” IPS FullHD(1920x1080p) 16:9 LED-Backlit Display (Matte)"
+			]
+		},
+
+		{
+			"label": "Áudio",
+			"description": 
+			[
+				"- High Definition Audio Interface",
+				"- Microfone Integrado",
+				"- 2 Alto Falantes integrados.",
+				"- Sound Blaster™ Cinema 2",
+				"- Saída amplificada para fone de ouvido"
+			]
+		},
+
+		{
+			"label": "Comunicação",
+			"description": 
+			[
+				"- Ethernet LAN"
+			]
+		},
+
+		{
+			"label": "Teclado",
+			"description": 
+			[
+				"- Teclado estilo chiclet",
+				"- Teclado Retroiluminado (Single Color)",
+				"- Padrão Internacional (EUA)",
+				"- Teclado numérico integrado"
+			]
+		},
+
+		{
+			"label": "Mouse",
+			"description": 
+			[
+				"- Touch Pad com função multi-toques escrolling"
+			]
+		},
+
+		{
+			"label": "Entradas/Saídas",
+			"description": 
+			[
+				"- HDMI 1.4b x 1 (com HDCP)",
+				"- VGA x 1",
+				"- USB 3.0 x 3 (USB 3.1 Gen 1)",
+				"- USB 2.0 x 1",
+				"- Microfone x 1",
+				"- Fone de ouvido x 1",
+				"- RJ-45 LAN (10/100/1000Mbps) x 1"
+			]
+		},
+
+		{
+			"label": "Slots",
+			"description": 
+			[
+				"- Leitor de cartão 9 em 1(MMC/RSMMC/MS/MS Pro/MS Duo/SD/Mini‐SD/SDHC/SDXC)",
+				"Dois Slots MiniCard",
+				"- WLAN Combo M.2 2230 Card com PCIe e USB interface",
+				"- SSD M.2 2280 Card com SATA / PCIe Gen3 x4 interface"
+			]
+		},
+
+		{
+			"label": "Adaptador de Energia",
+			"description": 
+			[
+				"- Universal AC-in 100~240V, 50~60Hz",
+				"- 120W com 19.5V, 6.15A DC",
+				"- 3 pin 240V AC cabo"
+			]
+		},
+
+		{
+			"label": "Bateria",
+			"description": 
+			[
+				"- 6 células Smart Lithium-Ion"
+			]
+		},
+
+		{
+			"label": "Webcam",
+			"description": 
+			[
+				"- Integrada: 2.0M FullHD video camera"
+			]
+		},
+
+		{
+			"label": "Segurança",
+			"description": 
+			[
+				"- Kensington lock"
+			]
+		},
+
+		{
+			"label": "Pasta Térmica",
+			"description": 
+			[
+				"- Artic Silver 5 thermal"
+			]
+		},
+
+		{
+			"label": "Garantia",
+			"description": 
+			[
+				"- Garantia de 3 anos em mão de obra e de 1 ano em peças."
+			]
+		}
+	],
+
+	"prices": 
+	{
+		"boleto": 
+		{
+			"valor": "R$4.499,10",
+			"desconto": "(10% de desconto)"
+		},
+
+		"cartao_credito": 
+		{
+			"valor": "R$416,58",
+			"quantidade": "\n            12        ",
+			"valor_total": "R$4.999,00"
+		}
+	},
+
+	"settings": 
+	[
+		{
+			"label": "PLACA DE VÍDEO",
+			"choice": 
+			[
+				{
+					"label": "NVIDIA GeForce GTX 950M GPU (2GB dedicado) ",
+					"signal": null,
+					"value": null
+				}
+			]
+		},
+
+		{
+			"label": "PROCESSADOR",
+			"choice": 
+			[
+				{
+					"label": "Intel® Core™ i5 7300HQ Kaby Lake (6Mb cache até 3.5 GHZ ) ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "Intel® Core™ i7 7700HQ Kaby Lake (6Mb cache até 3.8 GHZ) - [CONSULTE O PRAZO DE ENTREGA] ",
+					"signal": "+",
+					"value": "R$300,00"
+				}
+			]
+		},
+
+		{
+			"label": "MEMÓRIA",
+			"choice": 
+			[
+				{
+					"label": "16 GB Memória DDR4 (2400 MHZ) ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "32 GB Memória DDR4 (2400 MHZ) ",
+					"signal": "+",
+					"value": "R$466,00"
+				},
+
+				{
+					"label": "8 GB Memória DDR4 (2133 MHZ) ",
+					"signal": "-",
+					"value": "R$248,00"
+				}
+			]
+		},
+
+		{
+			"label": "HARD DISK (HDD), SSD ou SSHD",
+			"choice": 
+			[
+				{
+					"label": "SSHD 1 TB com 8GB SSD ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "SSD 240 GB SATA III  ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "HD 2TB - 5400 RPM ",
+					"signal": "+",
+					"value": "R$110,00"
+				},
+
+				{
+					"label": "SSD 480 GB SATA III  ",
+					"signal": "+",
+					"value": "R$286,00"
+				},
+
+				{
+					"label": "SSD 960 GB SATA III ",
+					"signal": "+",
+					"value": "R$943,00"
+				},
+
+				{
+					"label": "SSD M.2 SATAe - 240GB - [ 500 Mb/s ]  ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "SSD M.2 SATAe - 480GB - [ 500 Mb/s ]  ",
+					"signal": "+",
+					"value": "R$286,00"
+				},
+
+				{
+					"label": "SSD M.2 SATAe - 960GB - [ 500 Mb/s ]  ",
+					"signal": "+",
+					"value": "R$943,00"
+				}
+			]
+		},
+
+		{
+			"label": "SATAe M.2",
+			"choice": 
+			[
+				{
+					"label": "Nenhum cartão SATAe M.2 ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "SSD M.2 SATAe - 240GB - [ 500 Mb/s ]  ",
+					"signal": "+",
+					"value": "R$456,00"
+				},
+
+				{
+					"label": "SSD M.2 SATAe - 480GB - [ 500 Mb/s ]  ",
+					"signal": "+",
+					"value": "R$742,00"
+				},
+
+				{
+					"label": "SSD M.2 SATAe - 960GB - [ 500 Mb/s ]  ",
+					"signal": "+",
+					"value": "R$1.387,00"
+				}
+			]
+		},
+
+		{
+			"label": "TELA (LCD)",
+			"choice": 
+			[
+				{
+					"label": "15.6\" IPS FullHD (1920x1080p) 16:9  LED-Backlit - (Matte) ",
+					"signal": null,
+					"value": null
+				}
+			]
+		},
+
+		{
+			"label": "WIRELESS",
+			"choice": 
+			[
+				{
+					"label": "Intel Wireless-AC 3165 Wi-Fi+Bluetooth Combo ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "Intel Wireless-AC 8260 Wi-Fi + Bluetooth Combo (M.2)  ",
+					"signal": "+",
+					"value": "R$60,00"
+				}
+			]
+		},
+
+		{
+			"label": "SISTEMA OPERACIONAL",
+			"choice": 
+			[
+				{
+					"label": "Sem Sistema Operacional ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "Original Windows 10 Home 64bits ",
+					"signal": "+",
+					"value": "R$399,00"
+				},
+
+				{
+					"label": "Original Windows 10 Pro 64bits ",
+					"signal": "+",
+					"value": "R$480,00"
+				}
+			]
+		},
+
+		{
+			"label": "MICROSOFT OFFICE ",
+			"choice": 
+			[
+				{
+					"label": "Sem Licença Office ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "Microsoft Office 2016 Home & Students (Word, Excel, PowerPoint, OneNote) ",
+					"signal": "+",
+					"value": "R$399,00"
+				},
+
+				{
+					"label": "Microsoft Office 2016 Home & Business (Word, Excel, PowerPoint, OneNote, Outlook) ",
+					"signal": "+",
+					"value": "R$799,00"
+				}
+			]
+		},
+
+		{
+			"label": "PERSONALIZAÇÃO (Cores)",
+			"choice": 
+			[
+				{
+					"label": "Cor Padrão ",
+					"signal": null,
+					"value": null
+				},
+
+				{
+					"label": "Amarelo Fosco ",
+					"signal": "+",
+					"value": "R$99,00"
+				},
+
+				{
+					"label": "Azul Fosco ",
+					"signal": "+",
+					"value": "R$99,00"
+				},
+
+				{
+					"label": "Branco Fosco ",
+					"signal": "+",
+					"value": "R$99,00"
+				},
+
+				{
+					"label": "Laranja Fosco ",
+					"signal": "+",
+					"value": "R$99,00"
+				},
+
+				{
+					"label": "Lilás Fosco ",
+					"signal": "+",
+					"value": "R$99,00"
+				},
+
+				{
+					"label": "Verde Fosco ",
+					"signal": "+",
+					"value": "R$99,00"
+				},
+
+				{
+					"label": "Vermelho Fosco ",
+					"signal": "+",
+					"value": "R$99,00"
+				}
+			]
+		},
+
+		{
+			"label": "\n        \tPERSONALIZAÇÃO (Nome - Max: 2 nomes. Ex: Paulo André)        \t",
+			"choice": 
+			[
+				{
+					"label": null,
+					"signal": null,
+					"value": null
+				}
+			]
+		},
+
+		{
+			"label": "GARANTIA ",
+			"choice": 
+			[
+				{
+					"label": "Garantia de 3 anos em mão de obra e de 1 ano em peças. ",
+					"signal": null,
+					"value": null
+				}
+			]
+		},
+
+		{
+			"label": "ACESSÓRIOS",
+			"choice": 
+			[
+				{
+					"label": "Limpa Tela - Avell ",
+					"signal": "+",
+					"value": "R$20,00"
+				},
+
+				{
+					"label": "Mouse CM MasterMouse Lite S ",
+					"signal": "+",
+					"value": "R$119,00"
+				},
+
+				{
+					"label": "Headset Corsair Raptor HS30 ",
+					"signal": "+",
+					"value": "R$299,00"
+				},
+
+				{
+					"label": "Mochila Samsonite GuardIT ",
+					"signal": "+",
+					"value": "R$350,00"
+				},
+
+				{
+					"label": "Mochila Samsonite GuardIT ",
+					"signal": "+",
+					"value": "R$350,00"
+				},
+
+				{
+					"label": "Mochila Samsonite GuardIT ",
+					"signal": "+",
+					"value": "R$350,00"
+				},
+
+				{
+					"label": "Mochila Samsonite GuardIT ",
+					"signal": "+",
+					"value": "R$350,00"
+				}
+			]
+		}
+	]
+}

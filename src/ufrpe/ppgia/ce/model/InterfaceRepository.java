@@ -1,11 +1,11 @@
 /**
  * 
  */
-package model;
+package ufrpe.ppgia.ce.model;
 
 import java.util.List;
 
-import model.vo.NotebookVO;
+import ufrpe.ppgia.ce.vo.NotebookVO;
 
 /**
  * @author leonardo

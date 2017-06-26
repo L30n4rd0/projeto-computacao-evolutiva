@@ -1,25 +1,25 @@
 /**
  * 
  */
-package model.vo;
+package ufrpe.ppgia.ce.vo;
 
 /**
  * @author leonardo
  *
  */
-public class RAMMemory extends Component {
-	private String type, frequency;
+public class SATA extends Component {
+	private String type, unitMeasure;
 	private int size;
 	/**
 	 * @param priceChanger
 	 * @param type
-	 * @param frequency
+	 * @param unitMeasure
 	 * @param size
 	 */
-	public RAMMemory(double priceChanger, String type, String frequency, int size) {
+	public SATA(double priceChanger, String type, String unitMeasure, int size) {
 		super(priceChanger);
 		this.type = type;
-		this.frequency = frequency;
+		this.unitMeasure = unitMeasure;
 		this.size = size;
 	}
 	/**
@@ -29,10 +29,10 @@ public class RAMMemory extends Component {
 		return type;
 	}
 	/**
-	 * @return the frequency
+	 * @return the unitMeasure
 	 */
-	public String getFrequency() {
-		return frequency;
+	public String getUnitMeasure() {
+		return unitMeasure;
 	}
 	/**
 	 * @return the size

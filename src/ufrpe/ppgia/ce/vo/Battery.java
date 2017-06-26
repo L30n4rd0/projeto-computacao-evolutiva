@@ -1,4 +1,4 @@
-package model.vo;
+package ufrpe.ppgia.ce.vo;
 
 public class Battery {
 	private int cells;
