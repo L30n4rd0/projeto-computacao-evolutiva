@@ -8,7 +8,7 @@ package ufrpe.ppgia.ce.vo;
  *
  */
 public class NotebookVO {
-	private String nome, actionProduct, url, color; 
+	private String nameModel, actionProduct, url, color; 
 	private double width, height, depth, weight;
 	private Battery battery;
 	private ChipSet chipSet;
@@ -23,7 +23,7 @@ public class NotebookVO {
 	private VideoCard videoCard;
 	private WirelessCard wirelessCard;
 	/**
-	 * @param nome
+	 * @param nameModel
 	 * @param actionProduct
 	 * @param url
 	 * @param color
@@ -44,12 +44,12 @@ public class NotebookVO {
 	 * @param videoCard
 	 * @param wirelessCard
 	 */
-	public NotebookVO(String nome, String actionProduct, String url, String color, double width, double height,
+	public NotebookVO(String nameModel, String actionProduct, String url, String color, double width, double height,
 			double depth, double weight, Battery battery, ChipSet chipSet, KeyBoard keyBoard, OperationalSystem system,
 			Price price, Processor processor, RAMMemory ramMemory, SATA sata, Screen screen,
 			StorageMemory storageMemory, VideoCard videoCard, WirelessCard wirelessCard) {
 		super();
-		this.nome = nome;
+		this.nameModel = nameModel;
 		this.actionProduct = actionProduct;
 		this.url = url;
 		this.color = color;
@@ -71,7 +71,7 @@ public class NotebookVO {
 		this.wirelessCard = wirelessCard;
 	}
 	/**
-	 * @param nome
+	 * @param nameModel
 	 * @param actionProduct
 	 * @param url
 	 * @param color
@@ -87,11 +87,11 @@ public class NotebookVO {
 	 * @param storageMemory
 	 * @param videoCard
 	 */
-	public NotebookVO(String nome, String actionProduct, String url, String color, double width, double height,
+	public NotebookVO(String nameModel, String actionProduct, String url, String color, double width, double height,
 			double depth, double weight, Battery battery, Price price, Processor processor, RAMMemory ramMemory,
 			SATA sata, StorageMemory storageMemory, VideoCard videoCard) {
 		super();
-		this.nome = nome;
+		this.nameModel = nameModel;
 		this.actionProduct = actionProduct;
 		this.url = url;
 		this.color = color;
@@ -108,7 +108,7 @@ public class NotebookVO {
 		this.videoCard = videoCard;
 	}
 	/**
-	 * @param nome
+	 * @param nameModel
 	 * @param actionProduct
 	 * @param url
 	 * @param color
@@ -123,11 +123,11 @@ public class NotebookVO {
 	 * @param storageMemory
 	 * @param videoCard
 	 */
-	public NotebookVO(String nome, String actionProduct, String url, String color, double width, double height,
+	public NotebookVO(String nameModel, String actionProduct, String url, String color, double width, double height,
 			double depth, double weight, OperationalSystem system, Price price, Processor processor,
 			RAMMemory ramMemory, StorageMemory storageMemory, VideoCard videoCard) {
 		super();
-		this.nome = nome;
+		this.nameModel = nameModel;
 		this.actionProduct = actionProduct;
 		this.url = url;
 		this.color = color;
@@ -143,10 +143,10 @@ public class NotebookVO {
 		this.videoCard = videoCard;
 	}
 	/**
-	 * @return the nome
+	 * @return the nameModel
 	 */
-	public String getNome() {
-		return nome;
+	public String getNameModel() {
+		return nameModel;
 	}
 	/**
 	 * @return the actionProduct
