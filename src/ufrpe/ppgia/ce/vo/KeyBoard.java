@@ -8,24 +8,31 @@ package ufrpe.ppgia.ce.vo;
  *
  */
 public class KeyBoard {
-	private String style, layout;
-	private boolean illuminated;
+	private String type, layout, lighting;
+	private boolean gamingKeys, programmableKeys, antiGhost;
 	/**
-	 * @param style
+	 * @param type
 	 * @param layout
-	 * @param illuminated
+	 * @param lighting
+	 * @param gamingKeys
+	 * @param programmableKeys
+	 * @param antiGhost
 	 */
-	public KeyBoard(String style, String layout, boolean illuminated) {
+	public KeyBoard(String type, String layout, String lighting, boolean gamingKeys, boolean programmableKeys,
+			boolean antiGhost) {
 		super();
-		this.style = style;
+		this.type = type;
 		this.layout = layout;
-		this.illuminated = illuminated;
+		this.lighting = lighting;
+		this.gamingKeys = gamingKeys;
+		this.programmableKeys = programmableKeys;
+		this.antiGhost = antiGhost;
 	}
 	/**
-	 * @return the style
+	 * @return the type
 	 */
-	public String getStyle() {
-		return style;
+	public String getType() {
+		return type;
 	}
 	/**
 	 * @return the layout
@@ -34,10 +41,28 @@ public class KeyBoard {
 		return layout;
 	}
 	/**
-	 * @return the illuminated
+	 * @return the lighting
 	 */
-	public boolean isIlluminated() {
-		return illuminated;
+	public String getLighting() {
+		return lighting;
 	}
-
+	/**
+	 * @return the gamingKeys
+	 */
+	public boolean isGamingKeys() {
+		return gamingKeys;
+	}
+	/**
+	 * @return the programmableKeys
+	 */
+	public boolean isProgrammableKeys() {
+		return programmableKeys;
+	}
+	/**
+	 * @return the antiGhost
+	 */
+	public boolean isAntiGhost() {
+		return antiGhost;
+	}
+	
 }
