@@ -13,8 +13,8 @@ public class NotebookVO {
 	private Battery battery;
 	private ChipSet chipSet;
 	private KeyBoard keyBoard;
-	private OperationalSystem system;
-	private Price price;
+	private OperationalSystem operationalSystem;
+	private Price defaultPrice, personalizedPrice;
 	private Processor processor;
 	private RAMMemory ramMemory;
 	private SATA sata;
@@ -34,8 +34,8 @@ public class NotebookVO {
 	 * @param battery
 	 * @param chipSet
 	 * @param keyBoard
-	 * @param system
-	 * @param price
+	 * @param operationalSystem
+	 * @param defaultPrice
 	 * @param processor
 	 * @param ramMemory
 	 * @param sata
@@ -45,8 +45,8 @@ public class NotebookVO {
 	 * @param wirelessCard
 	 */
 	public NotebookVO(String nameModel, String actionProduct, String url, String color, double width, double height,
-			double depth, double weight, Battery battery, ChipSet chipSet, KeyBoard keyBoard, OperationalSystem system,
-			Price price, Processor processor, RAMMemory ramMemory, SATA sata, Screen screen,
+			double depth, double weight, Battery battery, ChipSet chipSet, KeyBoard keyBoard, OperationalSystem operationalSystem,
+			Price defaultPrice, Processor processor, RAMMemory ramMemory, SATA sata, Screen screen,
 			StorageMemory storageMemory, VideoCard videoCard, WirelessCard wirelessCard) {
 		super();
 		this.nameModel = nameModel;
@@ -60,8 +60,8 @@ public class NotebookVO {
 		this.battery = battery;
 		this.chipSet = chipSet;
 		this.keyBoard = keyBoard;
-		this.system = system;
-		this.price = price;
+		this.operationalSystem = operationalSystem;
+		this.defaultPrice = defaultPrice;
 		this.processor = processor;
 		this.ramMemory = ramMemory;
 		this.sata = sata;
@@ -69,6 +69,13 @@ public class NotebookVO {
 		this.storageMemory = storageMemory;
 		this.videoCard = videoCard;
 		this.wirelessCard = wirelessCard;
+		
+		this.personalizedPrice = new Price(0.0, 0.0, 10, 12);
+		
+		this.personalizedPrice.setCreditCard(this.defaultPrice.getCreditCard());
+		this.personalizedPrice.setInCash(this.defaultPrice.getInCash());
+		this.personalizedPrice.setDiscount(this.defaultPrice.getDiscount());
+		
 	}
 	/**
 	 * @param nameModel
@@ -100,7 +107,7 @@ public class NotebookVO {
 		this.depth = depth;
 		this.weight = weight;
 		this.battery = battery;
-		this.price = price;
+		this.defaultPrice = price;
 		this.processor = processor;
 		this.ramMemory = ramMemory;
 		this.sata = sata;
@@ -135,8 +142,8 @@ public class NotebookVO {
 		this.height = height;
 		this.depth = depth;
 		this.weight = weight;
-		this.system = system;
-		this.price = price;
+		this.operationalSystem = system;
+		this.defaultPrice = price;
 		this.processor = processor;
 		this.ramMemory = ramMemory;
 		this.storageMemory = storageMemory;
@@ -211,14 +218,14 @@ public class NotebookVO {
 	/**
 	 * @return the system
 	 */
-	public OperationalSystem getSystem() {
-		return system;
+	public OperationalSystem getOperationalSystem() {
+		return operationalSystem;
 	}
 	/**
 	 * @return the price
 	 */
-	public Price getPrice() {
-		return price;
+	public Price getDefaultPrice() {
+		return defaultPrice;
 	}
 	/**
 	 * @return the processor
@@ -261,6 +268,38 @@ public class NotebookVO {
 	 */
 	public WirelessCard getWirelessCard() {
 		return wirelessCard;
+	}
+	/**
+	 * @return the personalizedPrice
+	 */
+	public Price getPersonalizedPrice() {
+		return personalizedPrice;
+	}
+	/**
+	 * @param personalizedPrice the personalizedPrice to set
+	 */
+	public void setPersonalizedPrice(Price personalizedPrice) {
+		this.personalizedPrice = personalizedPrice;
+	}
+	public void updatePrices() {
+		
+		double sumComponentPrices = 0.0;
+		
+		sumComponentPrices += this.videoCard.getPriceChanger();
+		sumComponentPrices += this.processor.getPriceChanger();
+		sumComponentPrices += this.ramMemory.getPriceChanger();
+		sumComponentPrices += this.storageMemory.getPriceChanger();
+//		sumComponentPrices += this.sata.getPriceChanger();
+		sumComponentPrices += this.operationalSystem.getPriceChanger();
+		sumComponentPrices += this.screen.getPriceChanger();
+		sumComponentPrices += this.wirelessCard.getPriceChanger();
+		
+		this.personalizedPrice.setCreditCard(this.personalizedPrice.getCreditCard() + sumComponentPrices);
+		
+		// (1 - (getDiscount() / 100) = 0.9 -> discount of 10%
+		this.personalizedPrice.setInCash( this.personalizedPrice.getCreditCard() * (1 - (this.personalizedPrice.getDiscount() / 100)) );
+		
+		
 	}
 	
 }

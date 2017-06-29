@@ -10,23 +10,23 @@ package ufrpe.ppgia.ce.vo;
 public class Processor extends Component {
 	private String manufacturer, family, model;
 	private int cacheMemory;
-	private double frequency;
+	private double maxFrequency;
 	/**
 	 * @param priceChanger
 	 * @param manufacturer
 	 * @param family
 	 * @param model
 	 * @param cacheMemory
-	 * @param frequency
+	 * @param maxFrequency
 	 */
 	public Processor(double priceChanger, String manufacturer, String family, String model, int cacheMemory,
-			double frequency) {
+			double maxFrequency) {
 		super(priceChanger);
 		this.manufacturer = manufacturer;
 		this.family = family;
 		this.model = model;
 		this.cacheMemory = cacheMemory;
-		this.frequency = frequency;
+		this.maxFrequency = maxFrequency;
 	}
 	/**
 	 * @return the manufacturer
@@ -55,8 +55,8 @@ public class Processor extends Component {
 	/**
 	 * @return the frequency
 	 */
-	public double getFrequency() {
-		return frequency;
+	public double getMaxFrequency() {
+		return maxFrequency;
 	}
 	
 }

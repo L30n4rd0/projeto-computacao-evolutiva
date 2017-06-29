@@ -9,40 +9,22 @@ package ufrpe.ppgia.ce.vo;
  */
 public class OperationalSystem extends Component {
 	
-	private String type, version, edition;
+	private String description;
 
 	/**
 	 * @param priceChanger
-	 * @param type
-	 * @param version
-	 * @param edition
+	 * @param description
 	 */
-	public OperationalSystem(double priceChanger, String type, String version, String edition) {
+	public OperationalSystem(double priceChanger, String description) {
 		super(priceChanger);
-		this.type = type;
-		this.version = version;
-		this.edition = edition;
+		this.description = description;
 	}
 
 	/**
-	 * @return the type
+	 * @return the description
 	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * @return the version
-	 */
-	public String getVersion() {
-		return version;
-	}
-
-	/**
-	 * @return the edition
-	 */
-	public String getEdition() {
-		return edition;
+	public String getDescription() {
+		return description;
 	}
 	
 }

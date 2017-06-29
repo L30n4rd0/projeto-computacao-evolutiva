@@ -56,8 +56,18 @@ public class StringConverter {
 		format.setMinimumFractionDigits(2);
 //		format.setMaximumIntegerDigits(2);
 		format.setRoundingMode(RoundingMode.HALF_UP);
-		
 		return Double.valueOf(format.format(inputDouble));
+		
+	}
+	
+	public static double getPriceByString(String inputPrice) {
+		String tempString = inputPrice;
+		
+		tempString = tempString.replace(",", "virgula");
+		tempString = tempString.replace(".", "");
+		tempString = tempString.replace("virgula", ".");
+		
+		return StringConverter.getDoubleNumbersByString(tempString)[0];
 		
 	}
 

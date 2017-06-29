@@ -8,7 +8,8 @@ package ufrpe.ppgia.ce.vo;
  *
  */
 public class RAMMemory extends Component {
-	private String type, frequency;
+	private String type;
+	private double frequency;
 	private int size;
 	/**
 	 * @param priceChanger
@@ -16,7 +17,7 @@ public class RAMMemory extends Component {
 	 * @param frequency
 	 * @param size
 	 */
-	public RAMMemory(double priceChanger, String type, String frequency, int size) {
+	public RAMMemory(double priceChanger, String type, double frequency, int size) {
 		super(priceChanger);
 		this.type = type;
 		this.frequency = frequency;
@@ -31,7 +32,7 @@ public class RAMMemory extends Component {
 	/**
 	 * @return the frequency
 	 */
-	public String getFrequency() {
+	public double getFrequency() {
 		return frequency;
 	}
 	/**

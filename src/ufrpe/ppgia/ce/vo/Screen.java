@@ -7,17 +7,19 @@ package ufrpe.ppgia.ce.vo;
  *
  */
 
-public class Screen {
+public class Screen extends Component {
 	private double inches;
-	private int[] resolution;
+	private String technology;
+	
 	/**
+	 * @param priceChanger
 	 * @param inches
-	 * @param resolution
+	 * @param technology
 	 */
-	public Screen(double inches, int[] resolution) {
-		super();
+	public Screen(double priceChanger, double inches, String technology) {
+		super(priceChanger);
 		this.inches = inches;
-		this.resolution = resolution;
+		this.technology = technology;
 	}
 	/**
 	 * @return the inches
@@ -26,10 +28,11 @@ public class Screen {
 		return inches;
 	}
 	/**
-	 * @return the resolution
+	 * @return the technology
 	 */
-	public int[] getResolution() {
-		return resolution;
+	public String getTechnology() {
+		return technology;
 	}
+	
 	
 }

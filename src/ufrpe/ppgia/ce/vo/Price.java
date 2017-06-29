@@ -47,5 +47,23 @@ public class Price {
 	public int getInstallments() {
 		return installments;
 	}
+	/**
+	 * @param inCash the inCash to set
+	 */
+	public void setInCash(double inCash) {
+		this.inCash = inCash;
+	}
+	/**
+	 * @param creditCard the creditCard to set
+	 */
+	public void setCreditCard(double creditCard) {
+		this.creditCard = creditCard;
+	}
+	/**
+	 * @param discount the discount to set
+	 */
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
 
 }
