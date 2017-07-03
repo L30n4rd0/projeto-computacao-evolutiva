@@ -19,7 +19,15 @@ public class Application {
 		ControlNotebooks controlNotebooks = new ControlNotebooks();
 		
 		try {
-			controlNotebooks.getAllNotebook();
+//			List<NotebookVO> nnn = controlNotebooks.getAllNotebook();
+//			
+//			System.out.println(nnn.get(0).toCsvFormat());
+//			System.out.println(nnn.get(1).toCsvFormat());
+			
+//			controlNotebooks.migrateDB_ToNewMongoDB();
+//			controlNotebooks.migrateDB_ToCSV();
+			controlNotebooks.migrateCromossomoOptions();
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 //			System.out.println(e.getMessage());

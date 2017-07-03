@@ -6,6 +6,7 @@ package ufrpe.ppgia.ce.control;
 import java.util.List;
 
 import ufrpe.ppgia.ce.model.RepositoryFactory;
+import ufrpe.ppgia.ce.model.RepositoryMigrator;
 import ufrpe.ppgia.ce.vo.NotebookVO;
 
 /**
@@ -60,6 +61,21 @@ public class ControlNotebooks {
 	 **/	
 	public List<NotebookVO> getFilteredNotebookList(NotebookVO notebook) throws Exception {
 		return null;
+		
+	}
+	
+	public void migrateDB_ToCSV() throws Exception {
+		new RepositoryMigrator().mongoToCSV();;
+		
+	}
+	
+	public void migrateDB_ToNewMongoDB() throws Exception {
+		new RepositoryMigrator().mongoToNewMongo();
+		
+	}
+	
+	public void migrateCromossomoOptions() throws Exception {
+		new RepositoryMigrator().migrateCromossomoOptions();		
 		
 	}
 
