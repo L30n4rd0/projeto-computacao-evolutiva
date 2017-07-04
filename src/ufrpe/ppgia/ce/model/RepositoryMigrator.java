@@ -107,6 +107,9 @@ public class RepositoryMigrator {
 		Set<VideoCard> videoCards = new HashSet<>();
 		Set<WirelessCard> wirelessCards = new HashSet<>();
 		
+		System.out.println("Migratting Cromossomo Options");
+		System.out.println("Data unique!");
+		
 		for (DefaultNotebookModel notebookModel : notebookModels) {
 			
 			namesModel.add(notebookModel.getNameModel());
@@ -133,10 +136,8 @@ public class RepositoryMigrator {
 			
 			storageMemories.addAll(notebookModel.getStorageMemories());
 			
-			System.out.println(notebookModel.getFirstSATAS_eM2());
-			
 			firstSATAs_eM2.addAll(notebookModel.getFirstSATAS_eM2());
-//			
+			
 			secondSATAs_eM2.addAll(notebookModel.getSecondSATAS_eM2());
 			
 			videoCards.addAll(notebookModel.getVideoCards());
@@ -144,6 +145,8 @@ public class RepositoryMigrator {
 			wirelessCards.addAll(notebookModel.getWirelessCards());
 			
 		} // End for notebookModels
+		
+		System.out.println("Saving data!");
 		
 		MongoClient mongoClient = new MongoClient(this.serverAddress, this.port);
 		
@@ -155,6 +158,41 @@ public class RepositoryMigrator {
 		
 		Gson gson = new Gson();
 		
+		// *** Dropping collections if exists
+		avellDatabase.getCollection("namesModels").drop();
+		
+		avellDatabase.getCollection("productsActions").drop();
+		
+		avellDatabase.getCollection("colors").drop();
+		
+		avellDatabase.getCollection("weights").drop();
+	
+		avellDatabase.getCollection("batteries").drop();
+		
+		avellDatabase.getCollection("chipsets").drop();
+	
+		avellDatabase.getCollection("keyboards").drop();
+		
+		avellDatabase.getCollection("operatingSystem").drop();
+	
+		avellDatabase.getCollection("processors").drop();
+	
+		avellDatabase.getCollection("ramMemories").drop();
+	
+		avellDatabase.getCollection("screens").drop();
+	
+		avellDatabase.getCollection("storageMemories").drop();
+	
+		avellDatabase.getCollection("firstSATAs").drop();
+	
+		avellDatabase.getCollection("secondSATAs").drop();
+	
+		avellDatabase.getCollection("videoCards").drop();
+	
+		avellDatabase.getCollection("wirelessCards").drop();
+		// ***
+		
+		// *** Data inserting
 		for (String name : namesModel) {
 			collection = avellDatabase.getCollection("namesModels");
 			collection.insertOne(new Document("nameModel", name));
@@ -176,12 +214,12 @@ public class RepositoryMigrator {
 			
 		for (Double weight : weights) {
 			collection = avellDatabase.getCollection("weights");
-			collection.insertOne(new Document("weights", weight));
+			collection.insertOne(new Document("weight", weight));
 			
 		}
 		
 		for (Battery battery : batteries) {
-			collection = avellDatabase.getCollection("batterys");
+			collection = avellDatabase.getCollection("batteries");
 			jsonString = gson.toJson(battery);
 			
 			collection.insertOne(Document.parse(jsonString));
@@ -221,7 +259,7 @@ public class RepositoryMigrator {
 		}
 		
 		for (RAMMemory currentRamMemory : ramMemories) {
-			collection = avellDatabase.getCollection("ramMemorys");
+			collection = avellDatabase.getCollection("ramMemories");
 			jsonString = gson.toJson(currentRamMemory);
 			
 			collection.insertOne(Document.parse(jsonString));
@@ -237,7 +275,7 @@ public class RepositoryMigrator {
 		}
 		
 		for (StorageMemory currentStorageMemory : storageMemories) {
-			collection = avellDatabase.getCollection("storageMemorys");
+			collection = avellDatabase.getCollection("storageMemories");
 			jsonString = gson.toJson(currentStorageMemory);
 			
 			collection.insertOne(Document.parse(jsonString));
@@ -277,20 +315,21 @@ public class RepositoryMigrator {
 		}
 		
 		mongoClient.close();
+		System.out.println("Done!");
 		
 	}
 	
-	public void mongoToCSV() throws Exception {
+	public void migrateAllNotebooksToCSV() throws Exception {
 		
 		List<NotebookVO> notebooks = getAllNotebooksFromModels( getNotebookModelsFromOldMongoDB() );
 		
-		System.out.println("Notebooks size: " + notebooks.size());
+		System.out.println("Number of notebooks to save: " + notebooks.size());
 		
 		String csvContent = notebooks.get(0).getCsvHeader() + "\n";
 		
 		FileManager.writeFile("NotebooksCSV.csv", csvContent, false);
 		
-		System.out.println("Migrating data .....");
+		System.out.println("Migrating data to CSV.....");
 		
 		int cont = 1;
 		
@@ -310,18 +349,22 @@ public class RepositoryMigrator {
 		
 	}
 	
-	public void mongoToNewMongo() throws Exception {
+	public void migrateAllNotebooksToNewMongo() throws Exception {
 		List<NotebookVO> notebooks = getAllNotebooksFromModels( getNotebookModelsFromOldMongoDB() );
+		
+		System.out.println("Number of notebooks to save: " + notebooks.size());
 		
 		MongoClient mongoClient = new MongoClient(this.serverAddress, this.port);
 		
 		MongoDatabase avellDatabase = mongoClient.getDatabase(this.newDataBase);
 		
+		avellDatabase.getCollection(this.collection).drop();
+		
 		MongoCollection<Document> notebooksCollection = avellDatabase.getCollection(this.collection);
 		
 		String jsonNotebookString = "";
 		
-		System.out.println("Migrating data .....");
+		System.out.println("Migrating data to new mongo DB .....");
 		
 		int cont = 1;
 		for (NotebookVO notebookVO : notebooks) {
@@ -417,6 +460,42 @@ public class RepositoryMigrator {
 			notebookVO.updatePrices();
 		
 		return notebooks;
+	}
+	
+	public void migrateAllModelsToNewMongo() throws Exception {
+		
+		List<DefaultNotebookModel> notebookModels = getNotebookModelsFromOldMongoDB();
+		
+		MongoClient mongoClient = new MongoClient(this.serverAddress, this.port);
+		
+		MongoDatabase avellDatabase = mongoClient.getDatabase(this.newDataBase);
+		
+		avellDatabase.getCollection("models").drop();
+		
+		MongoCollection<Document> modelsCollection = avellDatabase.getCollection("models");
+		
+		String jsonModelString = "";
+		
+		System.out.println("Migrating data to new mongo DB .....");
+		
+		int cont = 1;
+		
+		for (DefaultNotebookModel defaultNotebookModel : notebookModels) {
+			Gson gson = new Gson();
+			
+			jsonModelString = gson.toJson(defaultNotebookModel);
+			
+			modelsCollection.insertOne(Document.parse(jsonModelString));
+			
+			System.out.println(cont + " added!");
+			cont++;
+			
+		}
+		
+		System.out.println("Done!!");
+		
+		mongoClient.close();
+		
 	}
 	
 	private List<DefaultNotebookModel> getNotebookModelsFromOldMongoDB() throws Exception {

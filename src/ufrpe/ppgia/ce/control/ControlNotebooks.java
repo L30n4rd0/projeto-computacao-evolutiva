@@ -5,7 +5,7 @@ package ufrpe.ppgia.ce.control;
 
 import java.util.List;
 
-import ufrpe.ppgia.ce.model.RepositoryFactory;
+import ufrpe.ppgia.ce.model.DAOsFactory;
 import ufrpe.ppgia.ce.model.RepositoryMigrator;
 import ufrpe.ppgia.ce.vo.NotebookVO;
 
@@ -42,7 +42,7 @@ public class ControlNotebooks {
 	public List<NotebookVO> getAllNotebook() throws Exception {
 		
 		
-		List<NotebookVO> notebooks = RepositoryFactory.getRepositoryInstance().getAllNotebook();
+		List<NotebookVO> notebooks = DAOsFactory.getUniqueInstance().getNotebookDAO().getAll();
 		
 		return notebooks;
 		
@@ -64,19 +64,23 @@ public class ControlNotebooks {
 		
 	}
 	
-	public void migrateDB_ToCSV() throws Exception {
-		new RepositoryMigrator().mongoToCSV();;
+	public void migrateAllNotebooksToCSV() throws Exception {
+		new RepositoryMigrator().migrateAllNotebooksToCSV();;
 		
 	}
 	
-	public void migrateDB_ToNewMongoDB() throws Exception {
-		new RepositoryMigrator().mongoToNewMongo();
+	public void migrateAllNotebooksToNewMongo() throws Exception {
+		new RepositoryMigrator().migrateAllNotebooksToNewMongo();
 		
 	}
 	
 	public void migrateCromossomoOptions() throws Exception {
 		new RepositoryMigrator().migrateCromossomoOptions();		
 		
+	}
+	
+	public void migrateAllModelsToNewMongo() throws Exception {
+		new RepositoryMigrator().migrateAllModelsToNewMongo();;
 	}
 
 }
