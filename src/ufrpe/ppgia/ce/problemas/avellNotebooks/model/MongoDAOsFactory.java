@@ -11,6 +11,7 @@ import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoKeyboardDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoNameModelDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoNotebookDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoNotebookModelDAO;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoOperationalSystemDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoProcessadorDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoProductActionDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoRamMemoryDAO;
@@ -28,6 +29,7 @@ import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.KeyboardDAOInter
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NameModelDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookModelDAOInterface;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.OperacionalSystemDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProcessorDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProductActionDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.RamMemoryDAOInterface;
@@ -185,6 +187,11 @@ public class MongoDAOsFactory extends DAOsFactory {
 	@Override
 	public WirelessCardDAOInterface getWirelessCardDAO() {
 		return new MongoWirelessCardDAO();
+	}
+
+	@Override
+	public OperacionalSystemDAOInterface getOperacionalSystemDAO() {
+		return new MongoOperationalSystemDAO();
 	}
 
 }

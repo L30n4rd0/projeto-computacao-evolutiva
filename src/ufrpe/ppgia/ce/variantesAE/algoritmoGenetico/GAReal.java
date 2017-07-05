@@ -1,4 +1,4 @@
-package ufrpe.ppgia.ce.algoritmoGenetico;
+package ufrpe.ppgia.ce.variantesAE.algoritmoGenetico;
 
 import java.util.ArrayList;
 import java.util.Arrays;

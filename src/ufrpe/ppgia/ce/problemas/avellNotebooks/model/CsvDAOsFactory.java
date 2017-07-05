@@ -11,6 +11,7 @@ import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.KeyboardDAOInter
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NameModelDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookModelDAOInterface;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.OperacionalSystemDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProcessorDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProductActionDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.RamMemoryDAOInterface;
@@ -183,6 +184,12 @@ public class CsvDAOsFactory extends DAOsFactory {
 	 */
 	@Override
 	public WirelessCardDAOInterface getWirelessCardDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OperacionalSystemDAOInterface getOperacionalSystemDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}

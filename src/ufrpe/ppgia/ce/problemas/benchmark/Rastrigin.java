@@ -1,9 +1,10 @@
 package ufrpe.ppgia.ce.problemas.benchmark;
 
 import java.lang.Math;
-import ufrpe.ppgia.ce.algoritmoGenetico.GAReal;
+
 import ufrpe.ppgia.ce.base.Problema;
-import ufrpe.ppgia.ce.base.solucao.SolucaoReal; 
+import ufrpe.ppgia.ce.base.solucao.SolucaoReal;
+import ufrpe.ppgia.ce.variantesAE.algoritmoGenetico.GAReal; 
  
 /**
  * Calculates the fitness of Rastrigin's function. 

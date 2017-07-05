@@ -1,4 +1,4 @@
-package ufrpe.ppgia.ce.programacaoEvolucionaria;
+package ufrpe.ppgia.ce.variantesAE.programacaoEvolucionaria;
 
 import java.util.ArrayList;
 import java.util.Comparator;

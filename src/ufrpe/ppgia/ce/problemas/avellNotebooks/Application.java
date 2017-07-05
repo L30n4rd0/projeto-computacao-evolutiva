@@ -1,10 +1,11 @@
 /**
  * 
  */
-package ufrpe.ppgia.ce.problemas.avellNotebooks.view;
+package ufrpe.ppgia.ce.problemas.avellNotebooks;
 
 import ufrpe.ppgia.ce.problemas.avellNotebooks.control.ControlNotebooks;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.DAOsFactory;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.view.AE_avellNotebooks;
 
 /**
  * @author leonardo
@@ -21,6 +22,8 @@ public class Application {
 		
 		try {
 			
+			new AE_avellNotebooks().executar();
+			
 //			controlNotebooks.migrateAllNotebooksToNewMongo();
 //			controlNotebooks.migrateAllNotebooksToCSV();
 //			controlNotebooks.migrateCromossomoOptions();
@@ -32,6 +35,7 @@ public class Application {
 //			System.out.println(DAOsFactory.getUniqueInstance().getFirstSATA().getAll().get(0));
 //			System.out.println(DAOsFactory.getUniqueInstance().getKeyboardDAO().getAll().get(0).getLayout());
 //			System.out.println(DAOsFactory.getUniqueInstance().getNameModelDAO().getAll().get(0));
+//			System.out.println(DAOsFactory.getUniqueInstance().getOperacionalSystemDAO().getAll().get(0).getDescription());
 ////			System.out.println(DAOsFactory.getUniqueInstance().getNotebookDAO().getAll().get(0));
 //			System.out.println(DAOsFactory.getUniqueInstance().getNotebookModelDAO().getAll().get(0).getUrl());
 //			System.out.println(DAOsFactory.getUniqueInstance().getProcessorDAO().getAll().get(0).getModel());

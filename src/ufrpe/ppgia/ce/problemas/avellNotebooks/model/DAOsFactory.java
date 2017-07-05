@@ -11,6 +11,7 @@ import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.KeyboardDAOInter
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NameModelDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookModelDAOInterface;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.OperacionalSystemDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProcessorDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProductActionDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.RamMemoryDAOInterface;
@@ -56,6 +57,7 @@ public abstract class DAOsFactory {
 	public abstract ColorDAOInterface getColorDAO();
 	public abstract FirstSATADAOInterface getFirstSATA();
 	public abstract KeyboardDAOInterface getKeyboardDAO();
+	public abstract OperacionalSystemDAOInterface getOperacionalSystemDAO();
 	public abstract NameModelDAOInterface getNameModelDAO();
 	public abstract NotebookDAOInterface getNotebookDAO();
 	public abstract NotebookModelDAOInterface getNotebookModelDAO();

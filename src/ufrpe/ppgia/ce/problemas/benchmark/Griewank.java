@@ -7,9 +7,9 @@ import java.util.List;
 
 import ufrpe.ppgia.ce.base.Problema;
 import ufrpe.ppgia.ce.base.solucao.SolucaoReal;
-import ufrpe.ppgia.ce.programacaoEvolucionaria.PE;
 import ufrpe.ppgia.ce.util.FileManager;
 import ufrpe.ppgia.ce.util.GriewankFunction;
+import ufrpe.ppgia.ce.variantesAE.programacaoEvolucionaria.PE;
 
 public class Griewank extends PE implements Problema<SolucaoReal> {
 	private int cont = 1, contAvaliacoes = 0;

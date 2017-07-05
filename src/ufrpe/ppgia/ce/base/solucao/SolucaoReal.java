@@ -2,7 +2,7 @@ package ufrpe.ppgia.ce.base.solucao;
 
 import ufrpe.ppgia.ce.base.Solucao;
 
-public class SolucaoReal implements Solucao<Double> {
+public class SolucaoReal implements Solucao<Double>, Cloneable {
 	
 	/* 
 	 * Vetor que representa o conjunto de genes do cromossomo
