@@ -3,19 +3,22 @@ package ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
+import ufrpe.ppgia.ce.base.OperadorSelecao;
 import ufrpe.ppgia.ce.base.solucao.SolucaoReal;
 
 
-public class SelecaoMelhores {
+public class SelecaoMelhores implements OperadorSelecao<SolucaoReal>{
 	
 	ArrayList<SolucaoReal> pais = new ArrayList<SolucaoReal>();
 
-	public ArrayList<SolucaoReal> pais (List<SolucaoReal> populacao, int numeroPais) {
-		populacao.sort(Comparator.comparingDouble(SolucaoReal::getFitness));
+	@Override
+	public List<SolucaoReal> selecionar(List<SolucaoReal> solutionSet) {
+		solutionSet.sort(Comparator.comparingDouble(SolucaoReal::getFitness));
 		
-		for (int i = 0; i<numeroPais; i++){
-			pais.add(populacao.get(i));
-		}
+		pais.add(solutionSet.get(0));
+		pais.add(solutionSet.get(1));
+		
 		return pais;
 	}
 }

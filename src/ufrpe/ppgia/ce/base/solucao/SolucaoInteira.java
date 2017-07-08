@@ -1,5 +1,7 @@
 package ufrpe.ppgia.ce.base.solucao;
 
+import java.util.Arrays;
+
 import ufrpe.ppgia.ce.base.Solucao;
 
 public class SolucaoInteira implements Solucao<Integer>, Cloneable {
@@ -86,4 +88,59 @@ public class SolucaoInteira implements Solucao<Integer>, Cloneable {
         clone.limiteSuperior = this.limiteSuperior;
 		return clone;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SolucaoInteira [cromossomo=" + Arrays.toString(cromossomo) + ", limiteInferior="
+				+ Arrays.toString(limiteInferior) + ", limiteSuperior=" + Arrays.toString(limiteSuperior) + ", n=" + n
+				+ ", fitness=" + fitness + "]";
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(cromossomo);
+		long temp;
+		temp = Double.doubleToLongBits(fitness);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + Arrays.hashCode(limiteInferior);
+		result = prime * result + Arrays.hashCode(limiteSuperior);
+		result = prime * result + n;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SolucaoInteira other = (SolucaoInteira) obj;
+		if (!Arrays.equals(cromossomo, other.cromossomo))
+			return false;
+		if (Double.doubleToLongBits(fitness) != Double.doubleToLongBits(other.fitness))
+			return false;
+		if (!Arrays.equals(limiteInferior, other.limiteInferior))
+			return false;
+		if (!Arrays.equals(limiteSuperior, other.limiteSuperior))
+			return false;
+		if (n != other.n)
+			return false;
+		return true;
+	}
+	
+	
+	
 }

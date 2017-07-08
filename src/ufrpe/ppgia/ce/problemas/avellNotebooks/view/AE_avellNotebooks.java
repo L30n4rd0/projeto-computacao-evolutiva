@@ -5,12 +5,13 @@ package ufrpe.ppgia.ce.problemas.avellNotebooks.view;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import ufrpe.ppgia.ce.base.Problema;
 import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
+import ufrpe.ppgia.ce.operadores.mutacao.MutacaoIncrementosLentos;
+import ufrpe.ppgia.ce.operadores.recombinacao.CrossoverNPontosSolucaoInteira;
+import ufrpe.ppgia.ce.operadores.recombinacao.CrossoverUmPontoSolucaoInteira;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.DAOsFactory;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.Battery;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.ChipSet;
@@ -72,6 +73,8 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 		this.wirelessCards = this.daosFactory.getWirelessCardDAO().getAll();
 		
 //		this.setTamanhoPop(200);
+		((CrossoverNPontosSolucaoInteira) this.getOperadorCruzamento()).setPr(0.9);
+//		((MutacaoIncrementosLentos) this.getOperadorMutacao()).setPm(0.5);
 		
 	}
 
@@ -81,6 +84,12 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 	@Override
 	public List<SolucaoInteira> inicializar() {
 		List<SolucaoInteira> populacao = new ArrayList<>();
+		
+		// Imprimir placas de video
+		for (VideoCard videoCard : this.videoCards) {
+			System.out.println(videoCard.getModel() + "# - Sli: " + videoCard.isSli());
+			
+		}
 		
 		for (int i = 0; i < this.getTamanhoPop(); i++){
 			SolucaoInteira individuo = new SolucaoInteira(CHROMOSOME_SIZE);
@@ -93,7 +102,7 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 			individuo.setLimiteSuperior(4, this.chipLists.size() - 1);
 			individuo.setLimiteSuperior(5, this.keyBoards.size() - 1);
 			individuo.setLimiteSuperior(6, this.operatingSystem.size() - 1);
-			individuo.setLimiteSuperior(7, this.processors.size() - 1);
+			individuo.setLimiteSuperior(7, this.processors.size() -1);
 			individuo.setLimiteSuperior(8, this.ramMemories.size() - 1);
 			individuo.setLimiteSuperior(9, this.screens.size() - 1);
 			individuo.setLimiteSuperior(10, this.storageMemories.size() - 1);
@@ -104,7 +113,14 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 			
 			for(int j = 0; j < individuo.getN(); j++) {
 				individuo.setLimiteInferior(j, 0);
-				individuo.setValor(j, (int) (Math.random() * (individuo.getLimiteSuperior(j) - individuo.getLimiteInferior(j))) + individuo.getLimiteInferior(j));
+				individuo.setValor(
+						j, 
+						(int) Math.round(
+								(Math.random() * (individuo.getLimiteSuperior(j) - individuo.getLimiteInferior(j))) + individuo.getLimiteInferior(j)
+								)
+						);
+				
+				
 				
 			}
 			
@@ -121,27 +137,111 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 	public boolean parar(List<SolucaoInteira> pop) {
 		pop.sort(Comparator.comparingDouble(SolucaoInteira::getFitness));
 		
-		System.out.println("Melhor fitness: " + pop.get(0).getFitness());
+		System.out.println(" - Melhor fitness: " + pop.get(0).getFitness());
+		
+//		int cont = 1;
+//		for (SolucaoInteira solucaoInteira : pop) {
+//			System.out.println(cont + ": " + solucaoInteira.getFitness());
+////			
+//			cont++;
+//		}
 		
 		return pop.get(0).getFitness() == 0.0;
 	}
 
 	@Override
 	public void avaliar(SolucaoInteira solucao) {
-		double fitness = 100;
+		double fitness = 130, peso = 10;
 		
-		
-		if (this.processors.get(solucao.getValor(7)).getModel().equals("7820HK"))
-			fitness -= 25;
-		
-		if (this.ramMemories.get(solucao.getValor(8)).getSize() == 64)
-			fitness -= 25;
-		
-		if (this.videoCards.get(solucao.getValor(12)).getModel().equals("GeForce GTX 1080"))
-			fitness -= 25;
+		if (this.namesModel.get( solucao.getValor(0) ).equals("Titanium G1546 IRON V4")) {
+			fitness -= peso;
+//			System.out.println("Diminuiu no nomeModelo");
 			
-		if (this.productActions.get(solucao.getValor(1)).equals("SUPER DESCONTO"))
-			fitness -= 25;
+		}
+		
+		if (this.productActions.get( solucao.getValor(1) ).equals("SUPER DESCONTO")) {
+			fitness -= peso;
+//			System.out.println("Diminuiu no action");
+			
+		}
+		
+		if (this.weights.get( solucao.getValor(2) ) == 3.2) {
+			fitness -= peso;
+//			System.out.println("Diminuiu no peso");
+			
+		}
+		
+		if (this.batteries.get( solucao.getValor(3) ).getCells() == 6) {
+			fitness -= peso;
+//			System.out.println("Diminuiu na bateria");
+			
+		}
+		
+		if (this.chipLists.get( solucao.getValor(4) ).getModel().equals("Z170")) {
+			fitness -= peso;
+//			System.out.println("Diminuiu no chipset");
+			
+		}
+		
+		if (this.keyBoards.get( solucao.getValor(5) ).isGamingKeys()) {
+			fitness -= peso;
+//			System.out.println("Diminuiu no teclado");
+			
+		}
+		
+		if (this.operatingSystem.get( solucao.getValor(6) ).getDescription().equals("Sem Sistema Operacional")) {
+			fitness -= peso;
+//			System.out.println("Diminuiu SO");
+			
+		}
+		
+		if (this.processors.get( solucao.getValor(7) ).getModel().equals("7820HK")) {
+			fitness -= peso;
+//			System.out.println("Diminuiu no processador");
+			
+		}
+		
+		if (this.ramMemories.get( solucao.getValor(8) ).getSize() == 64) {
+			fitness -= peso;
+//			System.out.println("Diminuiu na RAM");
+			
+		}
+		
+		if (this.screens.get( solucao.getValor(9) ).getInches() == 17.3) {
+			fitness -= peso;
+//			System.out.println("Diminuiu na tela");
+			
+		}
+		
+		if (this.storageMemories.get( solucao.getValor(10) ).getSize() == 960) {
+			fitness -= peso;
+//			System.out.println("Diminuiu no armazenamento");
+			
+		}
+		
+//		if (this.firstSATAs_eM2.get( solucao.getValor(11) ).getSize() == 240) {
+//			fitness -= peso;
+////			System.out.println("Diminuiu no SATA 1");
+//			
+//		}
+//		
+//		if (this.secondSATAs_eM2.get( solucao.getValor(12) ).getSize() == 0) {
+//			fitness -= peso;
+////			System.out.println("Diminuiu no SATA 2");
+//			
+//		}
+		
+		if (this.videoCards.get( solucao.getValor(13) ).getModel().equals("GeForce GTX 1080")) {
+			fitness -= peso;
+//			System.out.println("Diminuiu na placa de video");
+			
+		}
+		
+		if (this.wirelessCards.get( solucao.getValor(14) ).getManufacturer().equals("Intel")) {
+			fitness -= peso;
+//			System.out.println("Diminuiu na wireless");
+			
+		}
 		
 		solucao.setFitness(fitness);
 	}

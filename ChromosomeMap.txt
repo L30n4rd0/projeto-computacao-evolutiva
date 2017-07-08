@@ -1,0 +1,16 @@
+GENE	COMPONENT
+0		nameModel
+1		productAction
+2		weight
+3		battery
+4		chipList
+5		keyBoard
+6		operatingSystem
+7		processor
+8		ramMemory
+9		screen
+10		storageMemory
+11		firstSATA_eM2
+12		secondSATA_eM2
+13		videoCard
+14		wirelessCard

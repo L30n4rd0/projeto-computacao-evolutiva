@@ -1,5 +1,7 @@
 package ufrpe.ppgia.ce.operadores.mutacao;
 
+import java.util.Random;
+
 import ufrpe.ppgia.ce.base.OperadorMutacao;
 import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
 
@@ -19,12 +21,25 @@ public class MutacaoIncrementosLentos implements OperadorMutacao<SolucaoInteira>
 		SolucaoInteira mutacao = pai.clone();
 		
 		for(int i = 0; i < pai.getN(); i++) {
+			
 			if(Math.random() < pm) {
-				int incremento = (int) ((pai.getLimiteSuperior(i) - pai.getLimiteInferior(i)) * 0.1);
-				mutacao.setValor(i, pai.getValor(i) + incremento);
-			} else {
-				mutacao.setValor(i, pai.getValor(i));
+				int incremento = new Random().nextInt(2);
+				
+				if (incremento == 0)
+					incremento = -1;
+				
+				int novoGene = pai.getValor(i) + incremento;
+				
+				if (novoGene < pai.getLimiteInferior(i))
+					novoGene = pai.getLimiteSuperior(i);
+									
+				else if (novoGene > pai.getLimiteSuperior(i))
+					novoGene = pai.getLimiteInferior(i);
+					
+				mutacao.setValor(i, novoGene);
+				
 			}
+			
 		}
 		
 		return mutacao;

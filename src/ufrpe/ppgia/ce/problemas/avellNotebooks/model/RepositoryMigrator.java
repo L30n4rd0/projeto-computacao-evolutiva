@@ -86,6 +86,7 @@ public class RepositoryMigrator {
 	
 	public void migrateCromossomoOptions() throws Exception {
 		List<DefaultNotebookModel> notebookModels = getNotebookModelsFromOldMongoDB();
+		System.out.println("Models: " + notebookModels.size());
 		
 		Set<String> namesModel = new HashSet<>(), 
 				productActions = new HashSet<>(), 
@@ -407,7 +408,7 @@ public class RepositoryMigrator {
 										for (Screen screen : notebookModel.getScreens()) {
 										
 											for (WirelessCard wirelessCard : notebookModel.getWirelessCards()) {
-
+												
 												notebooks.add (
 														new NotebookVO(
 																notebookModel.getNameModel(), 
@@ -465,6 +466,7 @@ public class RepositoryMigrator {
 	public void migrateAllModelsToNewMongo() throws Exception {
 		
 		List<DefaultNotebookModel> notebookModels = getNotebookModelsFromOldMongoDB();
+		System.out.println("Models size: " + notebookModels.size());
 		
 		MongoClient mongoClient = new MongoClient(this.serverAddress, this.port);
 		
@@ -945,7 +947,6 @@ public class RepositoryMigrator {
 //		FileManager.writeFile("sourceJsonCSV.csv", this.sourceJsonCSV);
 		
 		mongoClient.close();
-		
 		return notebookModels;
 	}
 	

@@ -11,10 +11,13 @@ import java.util.List;
 import java.util.Random;
 
 import ufrpe.ppgia.ce.base.AE;
+import ufrpe.ppgia.ce.base.OperadorMutacao;
+import ufrpe.ppgia.ce.base.OperadorRecombinacao;
 import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
 import ufrpe.ppgia.ce.operadores.mutacao.MutacaoIncrementosLentos;
+import ufrpe.ppgia.ce.operadores.recombinacao.CrossoverNPontosSolucaoInteira;
 import ufrpe.ppgia.ce.operadores.recombinacao.CrossoverUmPontoSolucaoInteira;
-import ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes.SelecaoFPS;
+import ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes.SelecaoPorElitismo;
 
 /**
  * @author leonardo
@@ -25,12 +28,12 @@ public class GAInteira extends AE<SolucaoInteira> {
 	/**
 	 * Por padrão a probalidade de mutação é 0.1 
 	 */
-	private MutacaoIncrementosLentos operadorMutacao;
+	private OperadorMutacao<SolucaoInteira> operadorMutacao;
 	
 	/**
 	 * Por padrão a probalidade de cruzamento é 1 
 	 */
-	private CrossoverUmPontoSolucaoInteira operadorCruzamento;
+	private OperadorRecombinacao<SolucaoInteira> operadorCruzamento;
 	
 	/**
 	 * Por padrão o tamanho da população é 100 
@@ -45,7 +48,7 @@ public class GAInteira extends AE<SolucaoInteira> {
 		
 		this.operadorMutacao = new MutacaoIncrementosLentos();
 		
-		this.operadorCruzamento = new CrossoverUmPontoSolucaoInteira();
+		this.operadorCruzamento = new CrossoverNPontosSolucaoInteira();
 		
 		this.tamanhoPop = 100;
 	}
@@ -54,15 +57,6 @@ public class GAInteira extends AE<SolucaoInteira> {
 	public void executar() {
 		List<SolucaoInteira> pop = inicializar();
 		
-//		for (SolucaoInteira solucaoInteira : pop) {
-//			
-//			for (int i = 0; i < solucaoInteira.getN(); i++) {
-//				System.out.print(solucaoInteira.getValor(i) + " ");
-//				
-//			}
-//			System.out.println("\n");
-//		}
-		
 		for (SolucaoInteira individuo : pop) {
 			avaliar(individuo);
 		}
@@ -70,10 +64,14 @@ public class GAInteira extends AE<SolucaoInteira> {
 		int iteracao = 0;
 		System.out.print("Iteracao: " + iteracao);
 		
-		while (!parar(pop)) {
+		while (!parar(pop) && iteracao < 1000000) {
 			iteracao++;
 			SolucaoInteira[] pais = selecionarPais(pop);
 			SolucaoInteira[] descendentes = recombinar(pais);
+			
+//			for (int i = 0; i < pais.length; i++) {
+//				System.out.println("Fitness pai: " + pais[i].getFitness());
+//			}
 			
 			for(int i = 0; i < descendentes.length; i++) {
 				descendentes[i] = executarMutacao(descendentes[i]);
@@ -82,11 +80,19 @@ public class GAInteira extends AE<SolucaoInteira> {
 			
 			pop = selecionarSovreviventes(pop, descendentes);
 			
+			// Imprimir pop
+//			for (SolucaoInteira solucaoInteira : pop) {
+//			
+//				for (int i = 0; i < solucaoInteira.getN(); i++) {
+//					System.out.print(solucaoInteira.getValor(i) + " ");
+//					
+//				}
+//				System.out.println("\n");
+//			}
+			
 			System.out.print("Iteracao: " + iteracao);
 		}
 		
-//		pop.sort(Comparator.comparingDouble(SolucaoReal::getFitness));
-//		System.out.println("Melhor Fitness " +  pop.get(0).getFitness());
 	}	
 	
 	@Override
@@ -121,11 +127,18 @@ public class GAInteira extends AE<SolucaoInteira> {
 
 	@Override
 	public SolucaoInteira[] selecionarPais(List<SolucaoInteira> pop) {
-		SelecaoFPS solucaoFPS = new SelecaoFPS();
+		SelecaoPorElitismo solucao = new SelecaoPorElitismo();
+		
 		SolucaoInteira[] popIntermediaria = new SolucaoInteira[pop.size()];
 		
 		for(int i = 0; i < pop.size(); i += 2) {
-			List<SolucaoInteira> paisSelecionados =  solucaoFPS.selecionar(pop);
+			List<SolucaoInteira> paisSelecionados =  solucao.selecionar(pop);
+			
+//			for (SolucaoInteira solucaoInteira : paisSelecionados) {
+//				System.out.println("Fitness pai selecionado: " + solucaoInteira.getFitness());
+//				
+//			}
+			
 			popIntermediaria[i] = paisSelecionados.get(0);
 			popIntermediaria[i + 1] = paisSelecionados.get(1);
 			
@@ -198,14 +211,14 @@ public class GAInteira extends AE<SolucaoInteira> {
 	/**
 	 * @return the operadorMutacao
 	 */
-	public MutacaoIncrementosLentos getOperadorMutacao() {
+	public OperadorMutacao<SolucaoInteira> getOperadorMutacao() {
 		return operadorMutacao;
 	}
 
 	/**
 	 * @return the operadorCruzamento
 	 */
-	public CrossoverUmPontoSolucaoInteira getOperadorCruzamento() {
+	public OperadorRecombinacao<SolucaoInteira> getOperadorCruzamento() {
 		return operadorCruzamento;
 	}
 
