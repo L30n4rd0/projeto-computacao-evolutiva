@@ -17,7 +17,7 @@ public abstract class AE <S>{
 			descendentes[1] = executarMutacao(descendentes[1]);
 			avaliar(descendentes[0]);
 			avaliar(descendentes[1]);
-			pop = selecionarSovreviventes(pop, descendentes);
+			pop = selecionarSobreviventes(pop, descendentes);
 		}
 	}
 	
@@ -29,7 +29,7 @@ public abstract class AE <S>{
 	
 	public abstract S[] selecionarPais(List<S> pop);
 	
-	public abstract List<S> selecionarSovreviventes(List<S> pop, S[] descendentes);
+	public abstract List<S> selecionarSobreviventes(List<S> pop, S[] descendentes);
 	
 	public abstract S[] recombinar(S[] pais);
 	

@@ -11,12 +11,14 @@ import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoKeyboardDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoNameModelDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoNotebookDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoNotebookModelDAO;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoOfficeDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoOperationalSystemDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoProcessadorDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoProductActionDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoRamMemoryDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoScreenDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoSecondSATADAO;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoSecondStorageMemoryDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoStorageMemoryDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoVideoCardDAO;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.daos.MongoWeightDAO;
@@ -29,12 +31,14 @@ import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.KeyboardDAOInter
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NameModelDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookModelDAOInterface;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.OfficeDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.OperacionalSystemDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProcessorDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProductActionDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.RamMemoryDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ScreenDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.SecondSATADAOInterface;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.SecondStorageMemoryDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.StorageMemoryDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.VideoCardDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.WeightDAOInterface;
@@ -192,6 +196,16 @@ public class MongoDAOsFactory extends DAOsFactory {
 	@Override
 	public OperacionalSystemDAOInterface getOperacionalSystemDAO() {
 		return new MongoOperationalSystemDAO();
+	}
+
+	@Override
+	public OfficeDAOInterface getOfficeDAO() {
+		return new MongoOfficeDAO();
+	}
+
+	@Override
+	public SecondStorageMemoryDAOInterface getSecondStorageMemoryDAO() {
+		return new MongoSecondStorageMemoryDAO();
 	}
 
 }

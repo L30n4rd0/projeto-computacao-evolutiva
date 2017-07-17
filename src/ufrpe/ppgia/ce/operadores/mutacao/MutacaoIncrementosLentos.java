@@ -31,10 +31,10 @@ public class MutacaoIncrementosLentos implements OperadorMutacao<SolucaoInteira>
 				int novoGene = pai.getValor(i) + incremento;
 				
 				if (novoGene < pai.getLimiteInferior(i))
-					novoGene = pai.getLimiteSuperior(i);
+					novoGene = pai.getLimiteInferior(i);
 									
 				else if (novoGene > pai.getLimiteSuperior(i))
-					novoGene = pai.getLimiteInferior(i);
+					novoGene = pai.getLimiteSuperior(i);
 					
 				mutacao.setValor(i, novoGene);
 				

@@ -64,7 +64,7 @@ public class GAInteira extends AE<SolucaoInteira> {
 		int iteracao = 0;
 		System.out.print("Iteracao: " + iteracao);
 		
-		while (!parar(pop) && iteracao < 1000000) {
+		while (!parar(pop) && iteracao < 500000) {
 			iteracao++;
 			SolucaoInteira[] pais = selecionarPais(pop);
 			SolucaoInteira[] descendentes = recombinar(pais);
@@ -78,7 +78,7 @@ public class GAInteira extends AE<SolucaoInteira> {
 				avaliar(descendentes[i]);
 			}
 			
-			pop = selecionarSovreviventes(pop, descendentes);
+			pop = selecionarSobreviventes(pop, descendentes);
 			
 			// Imprimir pop
 //			for (SolucaoInteira solucaoInteira : pop) {
@@ -148,14 +148,15 @@ public class GAInteira extends AE<SolucaoInteira> {
 	}
 
 	@Override
-	public List<SolucaoInteira> selecionarSovreviventes(List<SolucaoInteira> pop, SolucaoInteira[] descendentes) {
+	public List<SolucaoInteira> selecionarSobreviventes(List<SolucaoInteira> pop, SolucaoInteira[] descendentes) {
 		pop.sort(Comparator.comparingDouble(SolucaoInteira::getFitness));
 		
-		SolucaoInteira pai = pop.get(0);
+		// Elitismo
+		SolucaoInteira melhorSolucao = pop.get(0);
 		
 		List<SolucaoInteira> sobreviventes = new ArrayList<>();
 		
-		sobreviventes.add(pai);
+		sobreviventes.add(melhorSolucao);
 		
 		for(int i = 1; i < descendentes.length; i++) {
 			sobreviventes.add(descendentes[i]);

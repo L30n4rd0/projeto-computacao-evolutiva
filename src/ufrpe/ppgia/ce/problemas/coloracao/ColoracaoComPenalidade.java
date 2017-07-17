@@ -57,7 +57,7 @@ public class ColoracaoComPenalidade extends AE<SolucaoInteira> implements Proble
 				avaliar(descendentes[i]);
 			}
 			
-			pop = selecionarSovreviventes(pop, descendentes);
+			pop = selecionarSobreviventes(pop, descendentes);
 		}
 		
 		System.out.println("Parou");
@@ -121,7 +121,7 @@ public class ColoracaoComPenalidade extends AE<SolucaoInteira> implements Proble
 
 
 	@Override
-	public List<SolucaoInteira> selecionarSovreviventes(List<SolucaoInteira> pop, SolucaoInteira[] descendentes) {
+	public List<SolucaoInteira> selecionarSobreviventes(List<SolucaoInteira> pop, SolucaoInteira[] descendentes) {
 		return new ArrayList<SolucaoInteira>(Arrays.asList(descendentes));
 	}
 

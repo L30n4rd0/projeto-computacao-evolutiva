@@ -11,12 +11,14 @@ import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.KeyboardDAOInter
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NameModelDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.NotebookModelDAOInterface;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.OfficeDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.OperacionalSystemDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProcessorDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ProductActionDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.RamMemoryDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.ScreenDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.SecondSATADAOInterface;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.SecondStorageMemoryDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.StorageMemoryDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.VideoCardDAOInterface;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.interfaces.WeightDAOInterface;
@@ -190,6 +192,18 @@ public class CsvDAOsFactory extends DAOsFactory {
 
 	@Override
 	public OperacionalSystemDAOInterface getOperacionalSystemDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public OfficeDAOInterface getOfficeDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SecondStorageMemoryDAOInterface getSecondStorageMemoryDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}

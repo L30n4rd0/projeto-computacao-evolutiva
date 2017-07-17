@@ -10,77 +10,84 @@ import ufrpe.ppgia.ce.util.ConstantsValues;
  *
  */
 public class NotebookVO {
-	private String nameModel, actionProduct, url, color; 
+	private String nameModel, productAction, url; 
 	private double width, height, depth, weight;
+	private Color color;
 	private Battery battery;
 	private ChipSet chipSet;
 	private KeyBoard keyBoard;
 	private OperationalSystem operationalSystem;
+	private Office office;
 	private Price defaultPrice, personalizedPrice;
 	private Processor processor;
 	private RAMMemory ramMemory;
 	private Screen screen;
-	private StorageMemory storageMemory, firstSATA_eM2, secondSATA_eM2;
+	private StorageMemory storageMemory,secondStorageMemory, firstSATA_eM2, secondSATA_eM2;
 	private VideoCard videoCard;
 	private WirelessCard wirelessCard;
 	
 	/**
 	 * @param nameModel
-	 * @param actionProduct
+	 * @param productAction
 	 * @param url
-	 * @param color
 	 * @param width
 	 * @param height
 	 * @param depth
 	 * @param weight
+	 * @param color
 	 * @param battery
 	 * @param chipSet
 	 * @param keyBoard
 	 * @param operationalSystem
+	 * @param office
 	 * @param defaultPrice
 	 * @param processor
 	 * @param ramMemory
 	 * @param screen
 	 * @param storageMemory
+	 * @param secondStorageMemory
 	 * @param firstSATA_eM2
 	 * @param secondSATA_eM2
 	 * @param videoCard
 	 * @param wirelessCard
 	 */
-	public NotebookVO(String nameModel, String actionProduct, String url, String color, double width, double height,
-			double depth, double weight, Battery battery, ChipSet chipSet, KeyBoard keyBoard,
-			OperationalSystem operationalSystem, Price defaultPrice, Processor processor, RAMMemory ramMemory,
-			Screen screen, StorageMemory storageMemory, StorageMemory firstSATA_eM2, StorageMemory secondSATA_eM2,
-			VideoCard videoCard, WirelessCard wirelessCard) {
+	public NotebookVO(String nameModel, String productAction, String url, double width, double height, double depth,
+			double weight, Color color, Battery battery, ChipSet chipSet, KeyBoard keyBoard,
+			OperationalSystem operationalSystem, Office office, Price defaultPrice, Processor processor,
+			RAMMemory ramMemory, Screen screen, StorageMemory storageMemory, StorageMemory secondStorageMemory,
+			StorageMemory firstSATA_eM2, StorageMemory secondSATA_eM2, VideoCard videoCard, WirelessCard wirelessCard) {
 		super();
 		this.nameModel = nameModel;
-		this.actionProduct = actionProduct;
+		this.productAction = productAction;
 		this.url = url;
-		this.color = color;
 		this.width = width;
 		this.height = height;
 		this.depth = depth;
 		this.weight = weight;
+		this.color = color;
 		this.battery = battery;
 		this.chipSet = chipSet;
 		this.keyBoard = keyBoard;
 		this.operationalSystem = operationalSystem;
+		this.office = office;
 		this.defaultPrice = defaultPrice;
 		this.processor = processor;
 		this.ramMemory = ramMemory;
 		this.screen = screen;
 		this.storageMemory = storageMemory;
+		this.secondStorageMemory = secondStorageMemory;
 		this.firstSATA_eM2 = firstSATA_eM2;
 		this.secondSATA_eM2 = secondSATA_eM2;
 		this.videoCard = videoCard;
 		this.wirelessCard = wirelessCard;
-
+		
+		// The personalized price initial is the same default price
 		this.personalizedPrice = new Price(
-				this.defaultPrice.getInCash(), 
-				this.defaultPrice.getCreditCard(), 
-				this.defaultPrice.getDiscount(), 
-				12
-			);
+			this.defaultPrice.getInCash(), 
+			this.defaultPrice.getCreditCard(), 
+			this.defaultPrice.getDiscount(), 
+			12
+		);
 		
 	}
 	
@@ -92,10 +99,10 @@ public class NotebookVO {
 	}
 
 	/**
-	 * @return the actionProduct
+	 * @return the productAction
 	 */
-	public String getActionProduct() {
-		return actionProduct;
+	public String getProductAction() {
+		return productAction;
 	}
 
 	/**
@@ -103,13 +110,6 @@ public class NotebookVO {
 	 */
 	public String getUrl() {
 		return url;
-	}
-
-	/**
-	 * @return the color
-	 */
-	public String getColor() {
-		return color;
 	}
 
 	/**
@@ -141,6 +141,13 @@ public class NotebookVO {
 	}
 
 	/**
+	 * @return the color
+	 */
+	public Color getColor() {
+		return color;
+	}
+
+	/**
 	 * @return the battery
 	 */
 	public Battery getBattery() {
@@ -166,6 +173,13 @@ public class NotebookVO {
 	 */
 	public OperationalSystem getOperationalSystem() {
 		return operationalSystem;
+	}
+
+	/**
+	 * @return the office
+	 */
+	public Office getOffice() {
+		return office;
 	}
 
 	/**
@@ -211,6 +225,13 @@ public class NotebookVO {
 	}
 
 	/**
+	 * @return the secondStorageMemory
+	 */
+	public StorageMemory getSecondStorageMemory() {
+		return secondStorageMemory;
+	}
+
+	/**
 	 * @return the firstSATA_eM2
 	 */
 	public StorageMemory getFirstSATA_eM2() {
@@ -242,11 +263,25 @@ public class NotebookVO {
 		
 		double sumComponentPrices = 0.0;
 		
+//		Color color;
+//		OperationalSystem operationalSystem;
+//		Office office;
+//		Processor processor;
+//		RAMMemory ramMemory;
+//		Screen screen;
+//		StorageMemory storageMemory,secondStorageMemory, firstSATA_eM2, secondSATA_eM2;
+//		VideoCard videoCard;
+//		WirelessCard wirelessCard;
+		
+		sumComponentPrices += this.office.priceChanger;
+		sumComponentPrices += this.color.priceChanger;
 		sumComponentPrices += this.videoCard.getPriceChanger();
 		sumComponentPrices += this.processor.getPriceChanger();
 		sumComponentPrices += this.ramMemory.getPriceChanger();
 		sumComponentPrices += this.storageMemory.getPriceChanger();
-//		sumComponentPrices += this.sata.getPriceChanger();
+		sumComponentPrices += this.secondStorageMemory.getPriceChanger();
+		sumComponentPrices += this.firstSATA_eM2.getPriceChanger();
+		sumComponentPrices += this.secondSATA_eM2.getPriceChanger();
 		sumComponentPrices += this.operationalSystem.getPriceChanger();
 		sumComponentPrices += this.screen.getPriceChanger();
 		sumComponentPrices += this.wirelessCard.getPriceChanger();
@@ -254,12 +289,9 @@ public class NotebookVO {
 		this.personalizedPrice.setCreditCard(this.personalizedPrice.getCreditCard() + sumComponentPrices);
 		
 		// (1 - (getDiscount() / 100) = 0.9 -> discount of 10%
-		this.personalizedPrice.setInCash( this.personalizedPrice.getCreditCard() * (1 - (this.personalizedPrice.getDiscount() / 100)) );
-		
+		this.personalizedPrice.setInCash( this.personalizedPrice.getCreditCard() * (1 - (this.personalizedPrice.getDiscount() / 100) ) );
 		
 	}
-	
-
 
 	/**
 	 * @return the header values of CSV format
@@ -307,7 +339,7 @@ public class NotebookVO {
 	public String toCsvFormat() {
 		String objectCsvValues = 
 				this.nameModel + ConstantsValues.CVS_SEPARATOR + 
-				this.actionProduct + ConstantsValues.CVS_SEPARATOR +
+				this.productAction + ConstantsValues.CVS_SEPARATOR +
 				this.url + ConstantsValues.CVS_SEPARATOR +
 				this.color + ConstantsValues.CVS_SEPARATOR +
 				this.width + ConstantsValues.CVS_SEPARATOR +
@@ -340,7 +372,6 @@ public class NotebookVO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((actionProduct == null) ? 0 : actionProduct.hashCode());
 		result = prime * result + ((battery == null) ? 0 : battery.hashCode());
 		result = prime * result + ((chipSet == null) ? 0 : chipSet.hashCode());
 		result = prime * result + ((color == null) ? 0 : color.hashCode());
@@ -353,12 +384,15 @@ public class NotebookVO {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((keyBoard == null) ? 0 : keyBoard.hashCode());
 		result = prime * result + ((nameModel == null) ? 0 : nameModel.hashCode());
+		result = prime * result + ((office == null) ? 0 : office.hashCode());
 		result = prime * result + ((operationalSystem == null) ? 0 : operationalSystem.hashCode());
 		result = prime * result + ((personalizedPrice == null) ? 0 : personalizedPrice.hashCode());
 		result = prime * result + ((processor == null) ? 0 : processor.hashCode());
+		result = prime * result + ((productAction == null) ? 0 : productAction.hashCode());
 		result = prime * result + ((ramMemory == null) ? 0 : ramMemory.hashCode());
 		result = prime * result + ((screen == null) ? 0 : screen.hashCode());
 		result = prime * result + ((secondSATA_eM2 == null) ? 0 : secondSATA_eM2.hashCode());
+		result = prime * result + ((secondStorageMemory == null) ? 0 : secondStorageMemory.hashCode());
 		result = prime * result + ((storageMemory == null) ? 0 : storageMemory.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		result = prime * result + ((videoCard == null) ? 0 : videoCard.hashCode());
@@ -382,11 +416,6 @@ public class NotebookVO {
 		if (getClass() != obj.getClass())
 			return false;
 		NotebookVO other = (NotebookVO) obj;
-		if (actionProduct == null) {
-			if (other.actionProduct != null)
-				return false;
-		} else if (!actionProduct.equals(other.actionProduct))
-			return false;
 		if (battery == null) {
 			if (other.battery != null)
 				return false;
@@ -426,6 +455,11 @@ public class NotebookVO {
 				return false;
 		} else if (!nameModel.equals(other.nameModel))
 			return false;
+		if (office == null) {
+			if (other.office != null)
+				return false;
+		} else if (!office.equals(other.office))
+			return false;
 		if (operationalSystem == null) {
 			if (other.operationalSystem != null)
 				return false;
@@ -441,6 +475,11 @@ public class NotebookVO {
 				return false;
 		} else if (!processor.equals(other.processor))
 			return false;
+		if (productAction == null) {
+			if (other.productAction != null)
+				return false;
+		} else if (!productAction.equals(other.productAction))
+			return false;
 		if (ramMemory == null) {
 			if (other.ramMemory != null)
 				return false;
@@ -455,6 +494,11 @@ public class NotebookVO {
 			if (other.secondSATA_eM2 != null)
 				return false;
 		} else if (!secondSATA_eM2.equals(other.secondSATA_eM2))
+			return false;
+		if (secondStorageMemory == null) {
+			if (other.secondStorageMemory != null)
+				return false;
+		} else if (!secondStorageMemory.equals(other.secondStorageMemory))
 			return false;
 		if (storageMemory == null) {
 			if (other.storageMemory != null)
@@ -481,6 +525,21 @@ public class NotebookVO {
 		} else if (!wirelessCard.equals(other.wirelessCard))
 			return false;
 		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "NotebookVO [nameModel=" + nameModel + ", productAction=" + productAction + ", url=" + url + ", width="
+				+ width + ", height=" + height + ", depth=" + depth + ", weight=" + weight + ", color=" + color
+				+ ", battery=" + battery + ", chipSet=" + chipSet + ", keyBoard=" + keyBoard + ", operationalSystem="
+				+ operationalSystem + ", office=" + office + ", defaultPrice=" + defaultPrice + ", personalizedPrice="
+				+ personalizedPrice + ", processor=" + processor + ", ramMemory=" + ramMemory + ", screen=" + screen
+				+ ", storageMemory=" + storageMemory + ", secondStorageMemory=" + secondStorageMemory
+				+ ", firstSATA_eM2=" + firstSATA_eM2 + ", secondSATA_eM2=" + secondSATA_eM2 + ", videoCard=" + videoCard
+				+ ", wirelessCard=" + wirelessCard + "]";
 	}
 	
 	

@@ -80,7 +80,7 @@ public class PE extends AE<SolucaoReal>{
 			 * A população recebe seleção de sobreviventes dos pais 
 			 * e seu descendentes
 			 * */
-			pop = selecionarSovreviventes(pop, descendentes);
+			pop = selecionarSobreviventes(pop, descendentes);
 			
 			System.out.print("Iteracao: " + iteracao);
 			
@@ -176,7 +176,7 @@ public class PE extends AE<SolucaoReal>{
 	 * por torneio
 	 */
 	@Override
-	public List<SolucaoReal> selecionarSovreviventes(List<SolucaoReal> pop, SolucaoReal[] descendentes) {
+	public List<SolucaoReal> selecionarSobreviventes(List<SolucaoReal> pop, SolucaoReal[] descendentes) {
 		
 		/*
 		 * Número de indivíduos para cada torneio

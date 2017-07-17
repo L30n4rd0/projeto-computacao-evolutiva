@@ -7,6 +7,7 @@ import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author leonardo
@@ -51,7 +52,10 @@ public class StringConverter {
 	}
 	
 	public static double formatDouble(double inputDouble) {
-		NumberFormat format = NumberFormat.getInstance();
+		
+		// Funciona para números menores de 1000
+		
+		NumberFormat format = NumberFormat.getInstance(Locale.US);
 		format.setMaximumFractionDigits(2);
 		format.setMinimumFractionDigits(2);
 //		format.setMaximumIntegerDigits(2);

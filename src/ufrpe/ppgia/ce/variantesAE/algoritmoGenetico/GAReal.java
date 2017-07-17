@@ -78,7 +78,7 @@ public class GAReal extends AE<SolucaoReal>{
 				avaliar(descendentes[i]);
 			}
 			
-			pop = selecionarSovreviventes(pop, descendentes);
+			pop = selecionarSobreviventes(pop, descendentes);
 			
 			System.out.print("Iteracao: " + iteracao);
 		}
@@ -137,7 +137,7 @@ public class GAReal extends AE<SolucaoReal>{
 	}
 
 	@Override
-	public List<SolucaoReal> selecionarSovreviventes(List<SolucaoReal> pop, SolucaoReal[] descendentes) {
+	public List<SolucaoReal> selecionarSobreviventes(List<SolucaoReal> pop, SolucaoReal[] descendentes) {
 		pop.sort(Comparator.comparingDouble(SolucaoReal::getFitness));
 		SolucaoReal pai = pop.get(0);
 		List<SolucaoReal> sobreviventes = new ArrayList<>();

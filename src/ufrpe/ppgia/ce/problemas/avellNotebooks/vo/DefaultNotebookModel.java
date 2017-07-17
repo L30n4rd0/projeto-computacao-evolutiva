@@ -10,24 +10,26 @@ import java.util.List;
  *
  */
 public class DefaultNotebookModel {
-	private String nameModel, actionProduct, url, color; 
+	private String nameModel, actionProduct, url; 
 	private double width, height, depth, weight;
 	private Battery battery;
 	private ChipSet chipSet;
 	private KeyBoard keyBoard;
+	private List<Color> colors;
 	private List<OperationalSystem> operatingSystems;
+	private List<Office> offices;
 	private Price defaultPrice;
 	private List<Processor> processors;
 	private List<RAMMemory> ramMemories;
-	private List<StorageMemory> storageMemories, firstSATAS_eM2, secondSATAS_eM2;
+	private List<StorageMemory> storageMemories, secondStorageMemories, firstSATAS_eM2, secondSATAS_eM2;
 	private List<Screen> screens;
 	private List<VideoCard> videoCards;
 	private List<WirelessCard> wirelessCards;
+	
 	/**
 	 * @param nameModel
 	 * @param actionProduct
 	 * @param url
-	 * @param color
 	 * @param width
 	 * @param height
 	 * @param depth
@@ -35,28 +37,31 @@ public class DefaultNotebookModel {
 	 * @param battery
 	 * @param chipSet
 	 * @param keyBoard
+	 * @param colors
 	 * @param operatingSystems
+	 * @param offices
 	 * @param defaultPrice
 	 * @param processors
 	 * @param ramMemories
 	 * @param storageMemories
+	 * @param secondStorageMemories
 	 * @param firstSATAS_eM2
 	 * @param secondSATAS_eM2
 	 * @param screens
 	 * @param videoCards
 	 * @param wirelessCards
 	 */
-	public DefaultNotebookModel(String nameModel, String actionProduct, String url, String color, double width,
-			double height, double depth, double weight, Battery battery, ChipSet chipSet, KeyBoard keyBoard,
-			List<OperationalSystem> operatingSystems, Price defaultPrice, List<Processor> processors,
-			List<RAMMemory> ramMemories, List<StorageMemory> storageMemories, List<StorageMemory> firstSATAS_eM2,
+	public DefaultNotebookModel(String nameModel, String actionProduct, String url, double width, double height,
+			double depth, double weight, Battery battery, ChipSet chipSet, KeyBoard keyBoard, List<Color> colors,
+			List<OperationalSystem> operatingSystems, List<Office> offices, Price defaultPrice,
+			List<Processor> processors, List<RAMMemory> ramMemories, List<StorageMemory> storageMemories,
+			List<StorageMemory> secondStorageMemories, List<StorageMemory> firstSATAS_eM2,
 			List<StorageMemory> secondSATAS_eM2, List<Screen> screens, List<VideoCard> videoCards,
 			List<WirelessCard> wirelessCards) {
 		super();
 		this.nameModel = nameModel;
 		this.actionProduct = actionProduct;
 		this.url = url;
-		this.color = color;
 		this.width = width;
 		this.height = height;
 		this.depth = depth;
@@ -64,156 +69,197 @@ public class DefaultNotebookModel {
 		this.battery = battery;
 		this.chipSet = chipSet;
 		this.keyBoard = keyBoard;
+		this.colors = colors;
 		this.operatingSystems = operatingSystems;
+		this.offices = offices;
 		this.defaultPrice = defaultPrice;
 		this.processors = processors;
 		this.ramMemories = ramMemories;
 		this.storageMemories = storageMemories;
+		this.secondStorageMemories = secondStorageMemories;
 		this.firstSATAS_eM2 = firstSATAS_eM2;
 		this.secondSATAS_eM2 = secondSATAS_eM2;
 		this.screens = screens;
 		this.videoCards = videoCards;
 		this.wirelessCards = wirelessCards;
 	}
+
 	/**
 	 * @return the nameModel
 	 */
 	public String getNameModel() {
 		return nameModel;
 	}
+
 	/**
 	 * @return the actionProduct
 	 */
 	public String getActionProduct() {
 		return actionProduct;
 	}
+
 	/**
 	 * @return the url
 	 */
 	public String getUrl() {
 		return url;
 	}
-	/**
-	 * @return the color
-	 */
-	public String getColor() {
-		return color;
-	}
+
 	/**
 	 * @return the width
 	 */
 	public double getWidth() {
 		return width;
 	}
+
 	/**
 	 * @return the height
 	 */
 	public double getHeight() {
 		return height;
 	}
+
 	/**
 	 * @return the depth
 	 */
 	public double getDepth() {
 		return depth;
 	}
+
 	/**
 	 * @return the weight
 	 */
 	public double getWeight() {
 		return weight;
 	}
+
 	/**
 	 * @return the battery
 	 */
 	public Battery getBattery() {
 		return battery;
 	}
+
 	/**
 	 * @return the chipSet
 	 */
 	public ChipSet getChipSet() {
 		return chipSet;
 	}
+
 	/**
 	 * @return the keyBoard
 	 */
 	public KeyBoard getKeyBoard() {
 		return keyBoard;
 	}
+
+	/**
+	 * @return the colors
+	 */
+	public List<Color> getColors() {
+		return colors;
+	}
+
 	/**
 	 * @return the operatingSystems
 	 */
 	public List<OperationalSystem> getOperatingSystems() {
 		return operatingSystems;
 	}
+
+	/**
+	 * @return the offices
+	 */
+	public List<Office> getOffices() {
+		return offices;
+	}
+
 	/**
 	 * @return the defaultPrice
 	 */
 	public Price getDefaultPrice() {
 		return defaultPrice;
 	}
+
 	/**
 	 * @return the processors
 	 */
 	public List<Processor> getProcessors() {
 		return processors;
 	}
+
 	/**
 	 * @return the ramMemories
 	 */
 	public List<RAMMemory> getRamMemories() {
 		return ramMemories;
 	}
+
 	/**
 	 * @return the storageMemories
 	 */
 	public List<StorageMemory> getStorageMemories() {
 		return storageMemories;
 	}
+
+	/**
+	 * @return the secondStorageMemories
+	 */
+	public List<StorageMemory> getSecondStorageMemories() {
+		return secondStorageMemories;
+	}
+
 	/**
 	 * @return the firstSATAS_eM2
 	 */
 	public List<StorageMemory> getFirstSATAS_eM2() {
 		return firstSATAS_eM2;
 	}
+
 	/**
 	 * @return the secondSATAS_eM2
 	 */
 	public List<StorageMemory> getSecondSATAS_eM2() {
 		return secondSATAS_eM2;
 	}
+
 	/**
 	 * @return the screens
 	 */
 	public List<Screen> getScreens() {
 		return screens;
 	}
+
 	/**
 	 * @return the videoCards
 	 */
 	public List<VideoCard> getVideoCards() {
 		return videoCards;
 	}
+
 	/**
 	 * @return the wirelessCards
 	 */
 	public List<WirelessCard> getWirelessCards() {
 		return wirelessCards;
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "DefaultNotebookModel [nameModel=" + nameModel + ", actionProduct=" + actionProduct + ", url=" + url
-				+ ", color=" + color + ", width=" + width + ", height=" + height + ", depth=" + depth + ", weight="
-				+ weight + ", battery=" + battery + ", chipSet=" + chipSet + ", keyBoard=" + keyBoard
-				+ ", operatingSystems=" + operatingSystems + ", defaultPrice=" + defaultPrice + ", processors="
-				+ processors + ", ramMemories=" + ramMemories + ", storageMemories=" + storageMemories
-				+ ", firstSATAS_eM2=" + firstSATAS_eM2 + ", secondSATAS_eM2=" + secondSATAS_eM2 + ", screens=" + screens
-				+ ", videoCards=" + videoCards + ", wirelessCards=" + wirelessCards + "]";
+				+ ", width=" + width + ", height=" + height + ", depth=" + depth + ", weight=" + weight + ", battery="
+				+ battery + ", chipSet=" + chipSet + ", keyBoard=" + keyBoard + ", colors=" + colors
+				+ ", operatingSystems=" + operatingSystems + ", offices=" + offices + ", defaultPrice=" + defaultPrice
+				+ ", processors=" + processors + ", ramMemories=" + ramMemories + ", storageMemories=" + storageMemories
+				+ ", secondStorageMemories=" + secondStorageMemories + ", firstSATAS_eM2=" + firstSATAS_eM2
+				+ ", secondSATAS_eM2=" + secondSATAS_eM2 + ", screens=" + screens + ", videoCards=" + videoCards
+				+ ", wirelessCards=" + wirelessCards + "]";
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -224,7 +270,7 @@ public class DefaultNotebookModel {
 		result = prime * result + ((actionProduct == null) ? 0 : actionProduct.hashCode());
 		result = prime * result + ((battery == null) ? 0 : battery.hashCode());
 		result = prime * result + ((chipSet == null) ? 0 : chipSet.hashCode());
-		result = prime * result + ((color == null) ? 0 : color.hashCode());
+		result = prime * result + ((colors == null) ? 0 : colors.hashCode());
 		result = prime * result + ((defaultPrice == null) ? 0 : defaultPrice.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(depth);
@@ -234,11 +280,13 @@ public class DefaultNotebookModel {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((keyBoard == null) ? 0 : keyBoard.hashCode());
 		result = prime * result + ((nameModel == null) ? 0 : nameModel.hashCode());
+		result = prime * result + ((offices == null) ? 0 : offices.hashCode());
 		result = prime * result + ((operatingSystems == null) ? 0 : operatingSystems.hashCode());
 		result = prime * result + ((processors == null) ? 0 : processors.hashCode());
 		result = prime * result + ((ramMemories == null) ? 0 : ramMemories.hashCode());
 		result = prime * result + ((screens == null) ? 0 : screens.hashCode());
 		result = prime * result + ((secondSATAS_eM2 == null) ? 0 : secondSATAS_eM2.hashCode());
+		result = prime * result + ((secondStorageMemories == null) ? 0 : secondStorageMemories.hashCode());
 		result = prime * result + ((storageMemories == null) ? 0 : storageMemories.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		result = prime * result + ((videoCards == null) ? 0 : videoCards.hashCode());
@@ -249,6 +297,7 @@ public class DefaultNotebookModel {
 		result = prime * result + ((wirelessCards == null) ? 0 : wirelessCards.hashCode());
 		return result;
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -276,10 +325,10 @@ public class DefaultNotebookModel {
 				return false;
 		} else if (!chipSet.equals(other.chipSet))
 			return false;
-		if (color == null) {
-			if (other.color != null)
+		if (colors == null) {
+			if (other.colors != null)
 				return false;
-		} else if (!color.equals(other.color))
+		} else if (!colors.equals(other.colors))
 			return false;
 		if (defaultPrice == null) {
 			if (other.defaultPrice != null)
@@ -305,6 +354,11 @@ public class DefaultNotebookModel {
 				return false;
 		} else if (!nameModel.equals(other.nameModel))
 			return false;
+		if (offices == null) {
+			if (other.offices != null)
+				return false;
+		} else if (!offices.equals(other.offices))
+			return false;
 		if (operatingSystems == null) {
 			if (other.operatingSystems != null)
 				return false;
@@ -329,6 +383,11 @@ public class DefaultNotebookModel {
 			if (other.secondSATAS_eM2 != null)
 				return false;
 		} else if (!secondSATAS_eM2.equals(other.secondSATAS_eM2))
+			return false;
+		if (secondStorageMemories == null) {
+			if (other.secondStorageMemories != null)
+				return false;
+		} else if (!secondStorageMemories.equals(other.secondStorageMemories))
 			return false;
 		if (storageMemories == null) {
 			if (other.storageMemories != null)
@@ -357,7 +416,4 @@ public class DefaultNotebookModel {
 		return true;
 	}
 	
-	
-	
-		
 }

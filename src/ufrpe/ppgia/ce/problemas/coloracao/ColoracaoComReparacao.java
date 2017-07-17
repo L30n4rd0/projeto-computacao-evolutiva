@@ -47,7 +47,7 @@ public class ColoracaoComReparacao extends AE<SolucaoInteira> implements Problem
 				avaliar(descendentes[i]);
 			}
 			
-			pop = selecionarSovreviventes(pop, descendentes);
+			pop = selecionarSobreviventes(pop, descendentes);
 		}
 		
 		System.out.println("Parou");
@@ -113,7 +113,7 @@ public class ColoracaoComReparacao extends AE<SolucaoInteira> implements Problem
 
 
 	@Override
-	public List<SolucaoInteira> selecionarSovreviventes(List<SolucaoInteira> pop, SolucaoInteira[] descendentes) {
+	public List<SolucaoInteira> selecionarSobreviventes(List<SolucaoInteira> pop, SolucaoInteira[] descendentes) {
 		return new ArrayList<SolucaoInteira>(Arrays.asList(descendentes));
 	}
 

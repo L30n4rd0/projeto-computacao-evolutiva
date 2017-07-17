@@ -3,7 +3,7 @@
  */
 package ufrpe.ppgia.ce.problemas.avellNotebooks;
 
-import ufrpe.ppgia.ce.problemas.avellNotebooks.control.ControlNotebooks;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.control.ControlMigrator;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.DAOsFactory;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.view.AE_avellNotebooks;
 
@@ -18,7 +18,7 @@ public class Application {
 	 */
 	public static void main(String[] args) {
 		
-		ControlNotebooks controlNotebooks = new ControlNotebooks();
+		ControlMigrator controlNotebooks = new ControlMigrator();
 		
 		try {
 			

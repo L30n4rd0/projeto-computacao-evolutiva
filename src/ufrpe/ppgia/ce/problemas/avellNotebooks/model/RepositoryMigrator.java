@@ -21,9 +21,11 @@ import com.mongodb.client.MongoDatabase;
 
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.Battery;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.ChipSet;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.Color;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.DefaultNotebookModel;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.KeyBoard;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.NotebookVO;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.Office;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.OperationalSystem;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.Price;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.Processor;
@@ -89,9 +91,9 @@ public class RepositoryMigrator {
 		System.out.println("Models: " + notebookModels.size());
 		
 		Set<String> namesModel = new HashSet<>(), 
-				productActions = new HashSet<>(), 
-				colors = new HashSet<>();
-		
+				productActions = new HashSet<>(); 
+				
+		Set<Color> colors = new HashSet<>();
 		Set<Double> weights = new HashSet<>();
 		Set<Battery> batteries = new HashSet<>();
 		Set<ChipSet> chipSets = new HashSet<>();
@@ -101,12 +103,15 @@ public class RepositoryMigrator {
 		Set<Processor> processors = new HashSet<>();
 		Set<RAMMemory> ramMemories = new HashSet<>();
 		Set<Screen> screens = new HashSet<>();
-		Set<StorageMemory> storageMemories = new HashSet<>(), 
+		Set<StorageMemory> 
+				storageMemories = new HashSet<>(), 
+				secondStorageMemories = new HashSet<>(), 
 				firstSATAs_eM2 = new HashSet<>(), 
 				secondSATAs_eM2 = new HashSet<>();
 		
 		Set<VideoCard> videoCards = new HashSet<>();
 		Set<WirelessCard> wirelessCards = new HashSet<>();
+		Set<Office> offices = new HashSet<>();
 		
 		System.out.println("Migratting Cromossomo Options");
 		System.out.println("Data unique!");
@@ -116,8 +121,6 @@ public class RepositoryMigrator {
 			namesModel.add(notebookModel.getNameModel());
 		
 			productActions.add(notebookModel.getActionProduct());
-			
-			colors.add(notebookModel.getColor());
 		
 			weights.add(notebookModel.getWeight());
 		
@@ -126,6 +129,8 @@ public class RepositoryMigrator {
 			chipSets.add(notebookModel.getChipSet());
 		
 			keyBoards.add(notebookModel.getKeyBoard());
+			
+			colors.addAll(notebookModel.getColors());
 			
 			operatingSystem.addAll(notebookModel.getOperatingSystems());
 			
@@ -137,6 +142,8 @@ public class RepositoryMigrator {
 			
 			storageMemories.addAll(notebookModel.getStorageMemories());
 			
+			secondStorageMemories.addAll(notebookModel.getSecondStorageMemories());
+			
 			firstSATAs_eM2.addAll(notebookModel.getFirstSATAS_eM2());
 			
 			secondSATAs_eM2.addAll(notebookModel.getSecondSATAS_eM2());
@@ -144,6 +151,8 @@ public class RepositoryMigrator {
 			videoCards.addAll(notebookModel.getVideoCards());
 			
 			wirelessCards.addAll(notebookModel.getWirelessCards());
+			
+			offices.addAll(notebookModel.getOffices());
 			
 		} // End for notebookModels
 		
@@ -183,6 +192,8 @@ public class RepositoryMigrator {
 		avellDatabase.getCollection("screens").drop();
 	
 		avellDatabase.getCollection("storageMemories").drop();
+		
+		avellDatabase.getCollection("secondStorageMemories").drop();
 	
 		avellDatabase.getCollection("firstSATAs").drop();
 	
@@ -191,6 +202,8 @@ public class RepositoryMigrator {
 		avellDatabase.getCollection("videoCards").drop();
 	
 		avellDatabase.getCollection("wirelessCards").drop();
+		
+		avellDatabase.getCollection("offices").drop();
 		// ***
 		
 		// *** Data inserting
@@ -207,9 +220,11 @@ public class RepositoryMigrator {
 			
 		}
 		
-		for (String color : colors) {
+		for (Color color : colors) {
 			collection = avellDatabase.getCollection("colors");
-			collection.insertOne(new Document("color", color));
+			jsonString = gson.toJson(color);
+			
+			collection.insertOne(Document.parse(jsonString));
 			
 		}
 			
@@ -283,6 +298,14 @@ public class RepositoryMigrator {
 			
 		}
 		
+		for (StorageMemory currentStorageMemory : secondStorageMemories) {
+			collection = avellDatabase.getCollection("secondStorageMemories");
+			jsonString = gson.toJson(currentStorageMemory);
+			
+			collection.insertOne(Document.parse(jsonString));
+			
+		}
+		
 		for (StorageMemory currentFirstSATA : firstSATAs_eM2) {
 			collection = avellDatabase.getCollection("firstSATAs");
 			jsonString = gson.toJson(currentFirstSATA);
@@ -310,6 +333,14 @@ public class RepositoryMigrator {
 		for (WirelessCard currentWirelessCard : wirelessCards) {
 			collection = avellDatabase.getCollection("wirelessCards");
 			jsonString = gson.toJson(currentWirelessCard);
+			
+			collection.insertOne(Document.parse(jsonString));
+			
+		}
+		
+		for (Office currentOffice : offices) {
+			collection = avellDatabase.getCollection("offices");
+			jsonString = gson.toJson(currentOffice);
 			
 			collection.insertOne(Document.parse(jsonString));
 			
@@ -391,68 +422,82 @@ public class RepositoryMigrator {
 		
 		for (DefaultNotebookModel notebookModel : notebookModels) {
 			
-			for (VideoCard videoCard : notebookModel.getVideoCards()) {
+			for (Color color : notebookModel.getColors()) {
 				
-				for (Processor processor : notebookModel.getProcessors()) {
+				for (VideoCard videoCard : notebookModel.getVideoCards()) {
 					
-					for (RAMMemory ramMemory : notebookModel.getRamMemories()) {
+					for (Processor processor : notebookModel.getProcessors()) {
 						
-						for (StorageMemory storageMemory : notebookModel.getStorageMemories()) {
-
-							for (StorageMemory firstSATA_eM2 : notebookModel.getFirstSATAS_eM2()) {
+						for (RAMMemory ramMemory : notebookModel.getRamMemories()) {
 							
-								for (StorageMemory secondSATA_eM2 : notebookModel.getSecondSATAS_eM2()) {
+							for (StorageMemory storageMemory : notebookModel.getStorageMemories()) {
 								
-									for (OperationalSystem operationalSystem : notebookModel.getOperatingSystems()) {
-										
-										for (Screen screen : notebookModel.getScreens()) {
-										
-											for (WirelessCard wirelessCard : notebookModel.getWirelessCards()) {
-												
-												notebooks.add (
-														new NotebookVO(
-																notebookModel.getNameModel(), 
-																notebookModel.getActionProduct(), 
-																notebookModel.getUrl(), 
-																notebookModel.getColor(), 
-																notebookModel.getWidth(), 
-																notebookModel.getHeight(), 
-																notebookModel.getDepth(), 
-																notebookModel.getWeight(), 
-																notebookModel.getBattery(), 
-																notebookModel.getChipSet(), 
-																notebookModel.getKeyBoard(), 
-																operationalSystem, 
-																notebookModel.getDefaultPrice(), 
-																processor, 
-																ramMemory, 
-																screen, 
-																storageMemory, 
-																firstSATA_eM2, 
-																secondSATA_eM2, 
-																videoCard, 
-																wirelessCard
-																)
-														
-														); // End add new notebook
-											
-											} // End for wirelessCards
-											
-										} // End for screens
-										
-									} // End for operationalSystems
+								for (StorageMemory secondStorageMemory : notebookModel.getSecondStorageMemories()) {
 									
-								} // End for secondSATAS_eM2
+									for (StorageMemory firstSATA_eM2 : notebookModel.getFirstSATAS_eM2()) {
+										
+										for (StorageMemory secondSATA_eM2 : notebookModel.getSecondSATAS_eM2()) {
+										
+											for (OperationalSystem operationalSystem : notebookModel.getOperatingSystems()) {
+												
+												for (Screen screen : notebookModel.getScreens()) {
+													
+													for (Office office : notebookModel.getOffices()) {
+														
+														for (WirelessCard wirelessCard : notebookModel.getWirelessCards()) {
+															System.out.println("sdsdsdsd");
+															notebooks.add (
+																	new NotebookVO(
+																			notebookModel.getNameModel(), 
+																			notebookModel.getActionProduct(), 
+																			notebookModel.getUrl(), 
+																			notebookModel.getWidth(), 
+																			notebookModel.getHeight(), 
+																			notebookModel.getDepth(), 
+																			notebookModel.getWeight(), 
+																			color, 
+																			notebookModel.getBattery(), 
+																			notebookModel.getChipSet(), 
+																			notebookModel.getKeyBoard(), 
+																			operationalSystem, 
+																			office, 
+																			notebookModel.getDefaultPrice(), 
+																			processor, 
+																			ramMemory, 
+																			screen, 
+																			storageMemory, 
+																			secondStorageMemory, 
+																			firstSATA_eM2, 
+																			secondSATA_eM2, 
+																			videoCard, 
+																			wirelessCard
+																			)
+																	
+																	); // End add new notebook
+														
+														} // End for wirelessCards
+														
+													} // End for Offices
+												
+												} // End for screens
+												
+											} // End for operationalSystems
+											
+										} // End for secondSATAS_eM2
+										
+									} // End for firstSATAS_eM2
+									
+								} //End for SecondStorageMemories
 								
-							} // End for firstSATAS_eM2
+							} // End for storageMemories
 							
-						} // End for storageMemories
+						} // End for ramMemories
 						
-					} // End for ramMemories
+					} // End for processors
 					
-				} // End for processors
+				} // End for videoCards
 				
-			} // End for videoCards
+			} // End for colors
 			
 		} // End for notebookModels
 		
@@ -534,8 +579,6 @@ public class RepositoryMigrator {
 			
 			JsonArray settingsJson = notebookJsonObject.get("settings").getAsJsonArray();
 			
-			String color = null;
-			
 			double width = 0, height = 0, depth = 0, weight = 0;
 			
 			Battery battery = null;
@@ -546,6 +589,8 @@ public class RepositoryMigrator {
 			
 			Price defaultPrice = null;
 			
+			List<Color> colors = new ArrayList<>();
+			
 			List<VideoCard> videoCards = new ArrayList<>();
 			
 			List<Processor> processors = new ArrayList<>();
@@ -553,13 +598,17 @@ public class RepositoryMigrator {
 			List<RAMMemory> ramMemories = new ArrayList<>();
 			
 			List<StorageMemory> 
-			storageMemories = new ArrayList<>(), 
+			storageMemories = new ArrayList<>(),
+			
+			secondStorageMemories = new ArrayList<>(),
 			
 			firstSATAS_eM2 = new ArrayList<>(), 
 			
 			secondSATAS_eM2 = new ArrayList<>();
 			
 			List<OperationalSystem> operatingSystems = new ArrayList<>();
+			
+			List<Office> offices = new ArrayList<>();
 			
 			List<Screen> screens = new ArrayList<>();
 			
@@ -569,7 +618,7 @@ public class RepositoryMigrator {
 			if (settingsJson.size() > 0) {
 				
 				currentModelCont++;
-//				System.out.println("\n" + tempCont);
+				System.out.println("\n" + currentModelCont);
 				
 				// Get all specifications
 				for (JsonElement specification : specificationsJson) {
@@ -604,11 +653,11 @@ public class RepositoryMigrator {
 						// ***
 						
 						// *** Color
-						if (descriptionArray.size() > 2)
-							color = descriptionArray.get(2).getAsString().substring(7);
-							
-						else
-							color = "Preto";
+//						if (descriptionArray.size() > 2)
+//							color = descriptionArray.get(2).getAsString().substring(7);
+//							
+//						else
+//							color = "Preto";
 						
 //						System.out.println(tempCont + color);
 						// ***
@@ -670,8 +719,31 @@ public class RepositoryMigrator {
 					
 					String currentLabel = setting.getAsJsonObject().get("label").getAsString();
 					
+					// *** Getting office Values
+					if (currentLabel.contains("Cores")) {
+						JsonArray choiceArray = setting.getAsJsonObject().get("choice").getAsJsonArray();
+						
+						this.sourceJsonCSV += choiceArray.size() + ConstantsValues.CVS_SEPARATOR + "\n";
+						
+						for (JsonElement color : choiceArray) {
+							
+							Color tempColorSystem = getColorByJsonObject(color.getAsJsonObject());
+							
+							colors.add(tempColorSystem);
+							
+//							System.out.println(color.getAsJsonObject());
+////							
+//							System.out.println(
+//									tempColorSystem.getName() + "\n" +
+//									tempColorSystem.getPriceChanger() + "\n"
+//									);
+							
+						}
+					}
+					// ***
+					
 					// *** Getting Video Cards Values
-					if (currentLabel.contains("PLACA DE VÍDEO")) {
+					else if (currentLabel.contains("PLACA DE VÍDEO")) {
 						JsonArray choiceArray = setting.getAsJsonObject().get("choice").getAsJsonArray();
 						
 						this.sourceJsonCSV += nameModel + ConstantsValues.CVS_SEPARATOR + 
@@ -761,8 +833,29 @@ public class RepositoryMigrator {
 							
 							StorageMemory tempStorageMemory = getStorageMemoryByJsonObject(storageMemoryJson.getAsJsonObject());
 							
+							System.out.println(storageMemoryJson.getAsJsonObject() + "\n");
+							
 							storageMemories.add(tempStorageMemory);
 							
+							System.out.println(tempStorageMemory.toString() + "\n");
+							
+						}
+					}
+					// ***
+					
+					// *** Getting secondStorageMemories Values
+					else if ((currentLabel.contains("2º SSD") || currentLabel.contains("2º HARD DISK")) && secondStorageMemories.isEmpty()) {
+						JsonArray choiceArray = setting.getAsJsonObject().get("choice").getAsJsonArray();
+						
+						this.sourceJsonCSV += choiceArray.size() + ConstantsValues.CVS_SEPARATOR;
+						
+						for (JsonElement storageMemoryJson : choiceArray) {
+							
+							StorageMemory tempStorageMemory = getStorageMemoryByJsonObject(storageMemoryJson.getAsJsonObject());
+							
+							secondStorageMemories.add(tempStorageMemory);
+							
+//							System.out.println(storageMemoryJson.getAsJsonObject());
 //							System.out.println(tempStorageMemory.toString() + "\n");
 							
 						}
@@ -858,7 +951,7 @@ public class RepositoryMigrator {
 					}
 					// ***
 					
-					// *** Getting wirelessCards Values
+					// *** Getting operational system Values
 					else if (currentLabel.contains("SISTEMA OPERACIONAL")) {
 						JsonArray choiceArray = setting.getAsJsonObject().get("choice").getAsJsonArray();
 						
@@ -879,24 +972,59 @@ public class RepositoryMigrator {
 					}
 					// ***
 					
+					// *** Getting office Values
+					else if (currentLabel.contains("MICROSOFT OFFICE")) {
+						JsonArray choiceArray = setting.getAsJsonObject().get("choice").getAsJsonArray();
+						
+						this.sourceJsonCSV += choiceArray.size() + ConstantsValues.CVS_SEPARATOR + "\n";
+						
+						for (JsonElement office : choiceArray) {
+							
+							Office tempOfficeSystem = getOfficeByJsonObject(office.getAsJsonObject());
+							
+							offices.add(tempOfficeSystem);
+							
+//							System.out.println(office.getAsJsonObject());
+//							
+//							System.out.println(
+//									tempOfficeSystem.getType() + "\n" +
+//									tempOfficeSystem.getPriceChanger() + "\n"
+//									);
+							
+						}
+					}
+					// ***
+					
 				}
 				
 				// Add new DefaultNotebookModel to array
 				if (true) {
 					
 					// The SATAS are optionals
-					if (firstSATAS_eM2.size() == 0)
+					if (firstSATAS_eM2.isEmpty())
 						firstSATAS_eM2.add(new StorageMemory(0.0, null, null, 0));
 					
-					if (secondSATAS_eM2.size() == 0)
+					if (secondSATAS_eM2.isEmpty())
 						secondSATAS_eM2.add(new StorageMemory(0.0, null, null, 0));
 					
+					// The secondStorage is optional
+					if (secondStorageMemories.isEmpty())
+						secondStorageMemories.add(new StorageMemory(0.0, null, null, 0));
+					
+					// The personalized color is optional
+					if (colors.isEmpty())
+						colors.add(new Color(0.0, "Cor Padrão"));
+					
+//					for (Color component : colors) {
+//						System.out.println(component);
+//					}
+					
 					notebookModels.add(
+							
 							new DefaultNotebookModel(
 									nameModel, 
 									actionProduct, 
 									url, 
-									color, 
 									width, 
 									height, 
 									depth, 
@@ -904,11 +1032,14 @@ public class RepositoryMigrator {
 									battery, 
 									chipSet, 
 									keyBoard, 
+									colors, 
 									operatingSystems, 
+									offices, 
 									defaultPrice, 
 									processors, 
 									ramMemories, 
 									storageMemories, 
+									secondStorageMemories, 
 									firstSATAS_eM2, 
 									secondSATAS_eM2, 
 									screens, 
@@ -922,14 +1053,17 @@ public class RepositoryMigrator {
 				} // End if add
 				
 				colectedCSV += nameModel + ConstantsValues.CVS_SEPARATOR +
+						colors.size() + ConstantsValues.CVS_SEPARATOR +
 						videoCards.size() + ConstantsValues.CVS_SEPARATOR +
 						processors.size() + ConstantsValues.CVS_SEPARATOR +
 						ramMemories.size() + ConstantsValues.CVS_SEPARATOR +
 						storageMemories.size() + ConstantsValues.CVS_SEPARATOR +
+						secondStorageMemories.size() + ConstantsValues.CVS_SEPARATOR +
 						firstSATAS_eM2.size() + ConstantsValues.CVS_SEPARATOR +
 						secondSATAS_eM2.size() + ConstantsValues.CVS_SEPARATOR +
 						screens.size() + ConstantsValues.CVS_SEPARATOR +
 						wirelessCards.size() + ConstantsValues.CVS_SEPARATOR +
+						offices.size() + ConstantsValues.CVS_SEPARATOR +
 						operatingSystems.size() + "\n";
 				
 			} // End if settingsJson.size
@@ -1306,7 +1440,10 @@ public class RepositoryMigrator {
 			if (storageMemoryValues.length == 1)
 				size = (int) storageMemoryValues[0];
 			
-			else
+			else if (storageMemoryValues.length == 2 && tempString.contains("SATAe")) {
+				size = (int) storageMemoryValues[storageMemoryValues.length-1];
+				
+			} else
 				size = (int) storageMemoryValues[storageMemoryValues.length-2];
 			
 			// ***
@@ -1407,6 +1544,7 @@ public class RepositoryMigrator {
 		String tempString = operationalSystemJsonObject.get("label").getAsString();
 		
 		// *** Getting description
+		// Removing a space in the last character
 		description = tempString.substring(0, tempString.length() - 1);
 		// ***
 		
@@ -1415,6 +1553,49 @@ public class RepositoryMigrator {
 		// ***
 		
 		return new OperationalSystem(priceChanger, description);
+		
+	}
+	
+	private Office getOfficeByJsonObject(JsonObject officeJsonObject) {
+		double priceChanger = 0.0;
+		String type = null;
+		
+		String tempString = officeJsonObject.get("label").getAsString();
+		
+		// *** Getting description
+		// Removing a space in the last character
+		while (tempString.charAt(tempString.length() -1) == ' ') {
+			tempString = tempString.substring(0, tempString.length() - 1);
+			
+		}
+		
+		type = tempString;
+		// ***
+		
+		// *** Getting priceChanger
+		priceChanger = getPriceChanger(officeJsonObject);
+		// ***
+		
+		return new Office(priceChanger, type);
+		
+	}
+	
+	private Color getColorByJsonObject(JsonObject colorJsonObject) {
+		double priceChanger = 0.0;
+		String name = "Cor Padrão";
+		
+		String tempString = colorJsonObject.get("label").getAsString();
+		
+		// *** Getting description
+		// Removing a space in the last character
+		name = tempString.substring(0, tempString.length() - 1);
+		// ***
+		
+		// *** Getting priceChanger
+		priceChanger = getPriceChanger(colorJsonObject);
+		// ***
+		
+		return new Color(priceChanger, name);
 		
 	}
 	

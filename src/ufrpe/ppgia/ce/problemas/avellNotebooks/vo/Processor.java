@@ -67,11 +67,11 @@ public class Processor extends Component {
 	public String getCsvHeader() {
 		String csvHeader = 
 				"Processador fabricante" + ConstantsValues.CVS_SEPARATOR + 
-				"Processador famÃ­lia" + ConstantsValues.CVS_SEPARATOR +
+				"Processador família" + ConstantsValues.CVS_SEPARATOR +
 				"Processador modelo" + ConstantsValues.CVS_SEPARATOR +
 				"Processador cache" + ConstantsValues.CVS_SEPARATOR +
-				"Processador frequÃªnciaMax" + ConstantsValues.CVS_SEPARATOR +
-				"Processador preÃ§o";
+				"Processador frequênnciaMax" + ConstantsValues.CVS_SEPARATOR +
+				"Processador preço";
 		
 		return csvHeader;
 		

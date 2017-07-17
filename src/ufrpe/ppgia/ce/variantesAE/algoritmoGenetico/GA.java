@@ -77,7 +77,7 @@ public class GA extends AE<SolucaoBinaria>{
 				avaliar(descendentes[i]);
 			}
 			
-			pop = selecionarSovreviventes(pop, descendentes);
+			pop = selecionarSobreviventes(pop, descendentes);
 		}
 		
 		System.out.println("Parou");
@@ -131,7 +131,7 @@ public class GA extends AE<SolucaoBinaria>{
 	}
 
 	@Override
-	public List<SolucaoBinaria> selecionarSovreviventes(List<SolucaoBinaria> pop, SolucaoBinaria[] descendentes) {
+	public List<SolucaoBinaria> selecionarSobreviventes(List<SolucaoBinaria> pop, SolucaoBinaria[] descendentes) {
 		return new ArrayList<SolucaoBinaria>(Arrays.asList(descendentes));
 	}
 
