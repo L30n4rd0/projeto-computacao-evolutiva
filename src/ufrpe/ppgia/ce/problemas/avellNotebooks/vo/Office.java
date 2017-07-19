@@ -32,7 +32,9 @@ public class Office extends Component {
 	 */
 	@Override
 	public String toString() {
-		return "Office [type=" + type + ", priceChanger=" + priceChanger + "]";
+		return "Office\n"
+				+ "\ttype=" + type + "\n"
+				+ "\tpriceChanger=" + priceChanger + "\n";
 	}
 
 	/* (non-Javadoc)
@@ -65,5 +67,7 @@ public class Office extends Component {
 			return false;
 		return true;
 	}
+	
+	
 
 }

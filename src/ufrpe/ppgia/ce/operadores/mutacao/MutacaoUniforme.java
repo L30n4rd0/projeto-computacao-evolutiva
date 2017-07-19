@@ -5,7 +5,7 @@ import ufrpe.ppgia.ce.base.solucao.SolucaoReal;
 
 public class MutacaoUniforme implements OperadorMutacao<SolucaoReal> {
 	
-	private double PM = 0.1;
+	private double pm = 0.1;
 
 	@Override
 	public SolucaoReal executarMutacao(SolucaoReal pai) {
@@ -19,7 +19,7 @@ public class MutacaoUniforme implements OperadorMutacao<SolucaoReal> {
 		SolucaoReal mutacao = pai.clone();
 		
 		for (int i = 0; i < pai.getN(); i++) {
-			if (Math.random() <= PM) {
+			if (Math.random() <= pm) {
 				/*
 				 * Um novo valor para um gene é gerado caso ele tenha passado pelo teste do PM
 				 * */
@@ -39,9 +39,14 @@ public class MutacaoUniforme implements OperadorMutacao<SolucaoReal> {
 		return mutacao;
 	}
 	
-	public void setPm(double pm) {
-		this.PM = pm;
+	public double getPm() {
+		return pm;
 	}
+
+	public void setPm(double pm) {
+		this.pm = pm;
+	}
+
 
 //	public static void main(String[] args) {
 //		

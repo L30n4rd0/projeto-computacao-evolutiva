@@ -10,7 +10,7 @@ import java.util.Random;
 import ufrpe.ppgia.ce.base.AE;
 import ufrpe.ppgia.ce.base.solucao.SolucaoBinaria;
 import ufrpe.ppgia.ce.operadores.mutacao.MutacaoBinaria;
-import ufrpe.ppgia.ce.operadores.recombinacao.CrossoverUmPonto;
+import ufrpe.ppgia.ce.operadores.recombinacao.RecombinacaoCrossoverUmPonto;
 import ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes.SelecaoFPSBinaria;
 
 public class GA extends AE<SolucaoBinaria>{
@@ -23,7 +23,7 @@ public class GA extends AE<SolucaoBinaria>{
 	/**
 	 * Por padrão a probalidade de cruzamento é 1 
 	 */
-	private CrossoverUmPonto operadorCruzamento = new CrossoverUmPonto();
+	private RecombinacaoCrossoverUmPonto operadorCruzamento = new RecombinacaoCrossoverUmPonto();
 	
 	/**
 	 * Por padrão o tamanho da população é 100 
@@ -54,7 +54,7 @@ public class GA extends AE<SolucaoBinaria>{
 	/**
 	 * @return the operadorCruzamento
 	 */
-	public CrossoverUmPonto getOperadorCruzamento() {
+	public RecombinacaoCrossoverUmPonto getOperadorCruzamento() {
 		return operadorCruzamento;
 	}
 
@@ -144,7 +144,7 @@ public class GA extends AE<SolucaoBinaria>{
 		SolucaoBinaria[] paisEmbaralhados = new SolucaoBinaria[pais.length];
 		paisEmbaralhados = paisAux.toArray(paisEmbaralhados);
 		
-		operadorCruzamento = new CrossoverUmPonto();
+		operadorCruzamento = new RecombinacaoCrossoverUmPonto();
 //		operadorCruzamento.setPr(0.7);
 		SolucaoBinaria[] filhos = new SolucaoBinaria[pais.length];
 		

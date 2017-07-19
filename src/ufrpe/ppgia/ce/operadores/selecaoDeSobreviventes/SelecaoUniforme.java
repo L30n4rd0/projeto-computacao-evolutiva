@@ -1,18 +1,26 @@
 package ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import ufrpe.ppgia.ce.base.OperadorSelecao;
+import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
 
-public class SelecaoUniforme {
+
+public class SelecaoUniforme implements OperadorSelecao<SolucaoInteira> {
 	
 	Random r = new Random();
-	ArrayList<String> pais = new ArrayList<String>();
+	List<SolucaoInteira> pais = new ArrayList<>();
 
-	public ArrayList<String> pais (ArrayList<String> populacao, int numeroPais) {
-		for (int i = 0; i<numeroPais;i++){
-			int aux = r.nextInt(populacao.size());
-			pais.add(populacao.get(aux));
+	@Override
+	public List<SolucaoInteira> selecionar(List<SolucaoInteira> solutionSet) {
+		
+		for (int i = 0; i<2; i++){
+			
+			int aux = r.nextInt(solutionSet.size());
+			pais.add(solutionSet.get(aux));
+			
 		}
 		return pais;
 	}

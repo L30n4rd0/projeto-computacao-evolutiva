@@ -7,7 +7,7 @@ import ufrpe.ppgia.ce.base.solucao.SolucaoReal;
 
 public class MutacaoNaoUniforme implements OperadorMutacao<SolucaoReal> {
 
-	private double PM = 0.1;
+	private double pm = 0.1;
 	
 	@Override
 	public SolucaoReal executarMutacao(SolucaoReal pai) {
@@ -17,7 +17,7 @@ public class MutacaoNaoUniforme implements OperadorMutacao<SolucaoReal> {
 			float aux = r.nextFloat();
 			float gaussianAleatorio = (float) r.nextGaussian();
 			
-			if (aux < PM){
+			if (aux < pm){
 				double newGene = pai.getValor(i) + gaussianAleatorio;
 				
 				/**
@@ -45,12 +45,13 @@ public class MutacaoNaoUniforme implements OperadorMutacao<SolucaoReal> {
 		return pai;	
 	}
 
-	/**
-	 * @param pM the pM to set
-	 */
-	public void setPm(double pM) {
-		PM = pM;
+	public double getPm() {
+		return pm;
 	}
-	
+
+	public void setPm(double pm) {
+		this.pm = pm;
+	}
+
 }
 

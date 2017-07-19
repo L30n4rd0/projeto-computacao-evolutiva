@@ -7,14 +7,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MutacaoInicializacaoAleatoria implements OperadorMutacao<SolucaoInteira> {
 	private double pm = 0.1d;
 
-	public double getPm() {
-		return pm;
-	}
-
-	public void setPm(double pm) {
-		this.pm = pm;
-	}
-
 	@Override
 	public SolucaoInteira executarMutacao(SolucaoInteira pai) {
 		SolucaoInteira mutacao = pai.clone();
@@ -30,4 +22,13 @@ public class MutacaoInicializacaoAleatoria implements OperadorMutacao<SolucaoInt
 		
 		return mutacao;
 	}
+	
+	public double getPm() {
+		return pm;
+	}
+
+	public void setPm(double pm) {
+		this.pm = pm;
+	}
+
 }

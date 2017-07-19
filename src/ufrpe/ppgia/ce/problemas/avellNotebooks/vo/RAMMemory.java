@@ -108,6 +108,17 @@ public class RAMMemory extends Component {
 			return false;
 		return true;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "RAMMemory\n"
+				+ "\ttype=" + type + "\n"
+				+ "\tfrequency=" + frequency + "\n"
+				+ "\tsize=" + size + "\n"
+				+ "\tpriceChanger=" + priceChanger + "\n";
+	}
 	
 	
 	

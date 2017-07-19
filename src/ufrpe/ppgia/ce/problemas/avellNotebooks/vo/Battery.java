@@ -82,6 +82,15 @@ public class Battery {
 			return false;
 		return true;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Battery\n"
+				+ "\tcells=" + cells + "\n"
+				+ "\ttechnology=" + technology + "\n";
+	}
 	
 	
 }

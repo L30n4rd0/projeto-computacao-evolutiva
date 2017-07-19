@@ -12,7 +12,7 @@ public class SelecaoFPS implements OperadorSelecao<SolucaoInteira>{
 	@Override
 	public List<SolucaoInteira> selecionar(List<SolucaoInteira> solutionSet) {
 		solutionSet.sort(Comparator.comparingDouble(SolucaoInteira::getFitness));
-		List<SolucaoInteira> pais = new ArrayList<>();
+		List<SolucaoInteira> paisSelecionados = new ArrayList<>();
 		
 		double totalFitness = 0;
 		Double[] fitnessNormalizado = new Double[solutionSet.size()];
@@ -36,18 +36,18 @@ public class SelecaoFPS implements OperadorSelecao<SolucaoInteira>{
 		
 		// Escolhendo o primeiro pai
 		int seletorDePai = new Random().nextInt(roletaDePais.size());
-		pais.add(roletaDePais.get(seletorDePai));
+		paisSelecionados.add(roletaDePais.get(seletorDePai));
 		
 		//Removendo todas as ocorrências do primeiro pai da roleta
-		while(roletaDePais.contains(pais.get(0))) {
-			roletaDePais.remove(pais.get(0));
+		while(roletaDePais.contains(paisSelecionados.get(0))) {
+			roletaDePais.remove(paisSelecionados.get(0));
 		}
 		
 		// Escolhendo o segundo pai
 		seletorDePai = new Random().nextInt(roletaDePais.size());
-		pais.add(roletaDePais.get(seletorDePai));
+		paisSelecionados.add(roletaDePais.get(seletorDePai));
 		
-		return pais;
+		return paisSelecionados;
 	}
 	
 	public static void main(String[] args) {

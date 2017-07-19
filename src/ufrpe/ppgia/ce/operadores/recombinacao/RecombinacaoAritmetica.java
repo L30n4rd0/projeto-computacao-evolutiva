@@ -11,10 +11,6 @@ public class RecombinacaoAritmetica implements OperadorRecombinacao<SolucaoReal>
 	private Random random = new Random();
 	private double pr = 0.7; 
 	
-	public void setPr(double pr) {
-		this.pr = pr;
-	}
-	
 	public SolucaoReal[] recombinar(SolucaoReal pai1, SolucaoReal pai2) {
 		int k =  random.nextInt(pai1.getN()-1)+1;
 		
@@ -24,26 +20,34 @@ public class RecombinacaoAritmetica implements OperadorRecombinacao<SolucaoReal>
 		
 		
 		if(Math.random() <= pr) {
-					
 			
-		for(int i=0; i<k; i++){
-			f1.setValor(i, pai1.getValor(i));
-			f2.setValor(i, pai2.getValor(i));
+			for(int i=0; i<k; i++){
+				f1.setValor(i, pai1.getValor(i));
+				f2.setValor(i, pai2.getValor(i));
+			}
+			
+			for(int i=k; i<pai1.getN(); i++){
+				double media = (pai1.getValor(i)+pai2.getValor(i))/2;
+				f1.setValor(i, media);
+				f2.setValor(i, media);
+			}
+			
 		}
 		
-		for(int i=k; i<pai1.getN(); i++){
-			double media = (pai1.getValor(i)+pai2.getValor(i))/2;
-			f1.setValor(i, media);
-			f2.setValor(i, media);
-		}
-		
-	}
 		SolucaoReal[] resposta = {f1,f2};
 	
 		return resposta;		
 		
-}
+	}
 	
+	public double getPr() {
+		return pr;
+	}
+
+	public void setPr(double pr) {
+		this.pr = pr;
+	}
+
 	public static void main(String[] args) {
 		
 		SolucaoReal pai1 = new SolucaoReal(6);

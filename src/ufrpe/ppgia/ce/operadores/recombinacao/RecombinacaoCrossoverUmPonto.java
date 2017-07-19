@@ -5,7 +5,7 @@ import java.util.Random;
 import ufrpe.ppgia.ce.base.OperadorRecombinacao;
 import ufrpe.ppgia.ce.base.solucao.SolucaoBinaria;
 
-public class CrossoverUmPonto implements OperadorRecombinacao<SolucaoBinaria>{
+public class RecombinacaoCrossoverUmPonto implements OperadorRecombinacao<SolucaoBinaria>{
 	private double pr = 1;
 
 	@Override
@@ -34,4 +34,9 @@ public class CrossoverUmPonto implements OperadorRecombinacao<SolucaoBinaria>{
 	public void setPr(double pr) {
 		this.pr = pr;
 	}
+
+	public double getPr() {
+		return pr;
+	}
+	
 }

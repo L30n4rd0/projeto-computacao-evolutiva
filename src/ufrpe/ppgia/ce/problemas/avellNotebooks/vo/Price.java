@@ -132,6 +132,17 @@ public class Price {
 			return false;
 		return true;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Price\n"
+				+ "\tinCash=" + inCash + "\n"
+				+ "\tcreditCard=" + creditCard + "\n"
+				+ "\tdiscount=" + discount + "\n"
+				+ "\tinstallments="	+ installments + "\n";
+	}
 	
 
 }

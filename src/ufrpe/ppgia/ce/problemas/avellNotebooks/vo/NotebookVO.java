@@ -364,6 +364,11 @@ public class NotebookVO {
 		return objectCsvValues;
 		
 	}
+	
+//	public String showEspecifications() {
+//		
+//		
+//	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -532,16 +537,31 @@ public class NotebookVO {
 	 */
 	@Override
 	public String toString() {
-		return "NotebookVO [nameModel=" + nameModel + ", productAction=" + productAction + ", url=" + url + ", width="
-				+ width + ", height=" + height + ", depth=" + depth + ", weight=" + weight + ", color=" + color
-				+ ", battery=" + battery + ", chipSet=" + chipSet + ", keyBoard=" + keyBoard + ", operationalSystem="
-				+ operationalSystem + ", office=" + office + ", defaultPrice=" + defaultPrice + ", personalizedPrice="
-				+ personalizedPrice + ", processor=" + processor + ", ramMemory=" + ramMemory + ", screen=" + screen
-				+ ", storageMemory=" + storageMemory + ", secondStorageMemory=" + secondStorageMemory
-				+ ", firstSATA_eM2=" + firstSATA_eM2 + ", secondSATA_eM2=" + secondSATA_eM2 + ", videoCard=" + videoCard
-				+ ", wirelessCard=" + wirelessCard + "]";
+		return "Notebook Specification\n"
+				+ "\tnameModel=" + nameModel + "\n"
+				+ "\tproductAction=" + productAction + "\n"
+				+ "\turl=" + url + "\n"
+				+ "\twidth=" + width + "\n"
+				+ "\theight=" + height + "\n"
+				+ "\tdepth=" + depth + "\n"
+				+ "\tweight=" + weight + "\n"
+				+ color + "\n"
+				+ battery + "\n"
+				+ chipSet + "\n"
+				+ keyBoard + "\n"
+				+ operationalSystem + "\n"
+				+ office + "\n"
+				+ "default " + defaultPrice + "\n"
+				+ "personalized " + personalizedPrice + "\n"
+				+ processor + "\n"
+				+ ramMemory + "\n"
+				+ screen + "\n"
+				+ "first " + storageMemory + "\n"
+				+ "second " + secondStorageMemory + "\n"
+				+ "firstSATA_eM2 " + firstSATA_eM2 + "\n"
+				+ "secondSATA_eM2 " + secondSATA_eM2 + "\n"
+				+ videoCard	+ "\n"
+				+ wirelessCard + "\n";
 	}
-	
-	
 	
 }

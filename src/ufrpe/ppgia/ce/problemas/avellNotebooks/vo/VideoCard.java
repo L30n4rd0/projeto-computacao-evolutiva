@@ -125,6 +125,18 @@ public class VideoCard extends Component {
 			return false;
 		return true;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "VideoCard\n"
+				+ "\tmanufacturer=" + manufacturer + "\n"
+				+ "\tmodel=" + model + "\n"
+				+ "\tdedicatedMemory=" + dedicatedMemory + "\n"
+				+ "\tsli=" + sli + "\n"
+				+ "\tpriceChanger=" + priceChanger + "\n";
+	}
 	
 	
 	

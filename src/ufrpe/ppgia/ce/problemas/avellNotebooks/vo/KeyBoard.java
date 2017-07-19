@@ -149,5 +149,20 @@ public class KeyBoard {
 			return false;
 		return true;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "KeyBoard\n"
+				+ "\ttype=" + type + "\n"
+				+ "\tlayout=" + layout + "\n"
+				+ "\tlighting=" + lighting + "\n"
+				+ "\tgamingKeys=" + gamingKeys + "\n"
+				+ "\tprogrammableKeys=" + programmableKeys + "\n"
+				+ "\tantiGhost=" + antiGhost + "\n";
+	}
+	
+	
 	
 }

@@ -13,11 +13,11 @@ import java.util.Random;
 import ufrpe.ppgia.ce.base.AE;
 import ufrpe.ppgia.ce.base.OperadorMutacao;
 import ufrpe.ppgia.ce.base.OperadorRecombinacao;
+import ufrpe.ppgia.ce.base.OperadorSelecao;
 import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
 import ufrpe.ppgia.ce.operadores.mutacao.MutacaoIncrementosLentos;
-import ufrpe.ppgia.ce.operadores.recombinacao.CrossoverNPontosSolucaoInteira;
-import ufrpe.ppgia.ce.operadores.recombinacao.CrossoverUmPontoSolucaoInteira;
-import ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes.SelecaoPorElitismo;
+import ufrpe.ppgia.ce.operadores.recombinacao.RecombinacaoCrossoverNPontosInteira;
+import ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes.SelecaoFPS;
 
 /**
  * @author leonardo
@@ -35,10 +35,14 @@ public class GAInteira extends AE<SolucaoInteira> {
 	 */
 	private OperadorRecombinacao<SolucaoInteira> operadorCruzamento;
 	
+	private OperadorSelecao<SolucaoInteira> operadorSelecaoPais;
+	
 	/**
 	 * Por padrão o tamanho da população é 100 
 	 */
-	private int tamanhoPop;
+	private int tamanhoPop, qtdIteracoes;
+	
+	protected List<Double> melhoresFitnessPorGeracao;
 	
 	/**
 	 * 
@@ -48,9 +52,16 @@ public class GAInteira extends AE<SolucaoInteira> {
 		
 		this.operadorMutacao = new MutacaoIncrementosLentos();
 		
-		this.operadorCruzamento = new CrossoverNPontosSolucaoInteira();
+		this.operadorCruzamento = new RecombinacaoCrossoverNPontosInteira();
+		
+		this.operadorSelecaoPais = new SelecaoFPS();
 		
 		this.tamanhoPop = 100;
+		
+		this.qtdIteracoes = 1000;
+		
+		this.melhoresFitnessPorGeracao = new ArrayList<>();
+		
 	}
 
 	@Override
@@ -64,14 +75,10 @@ public class GAInteira extends AE<SolucaoInteira> {
 		int iteracao = 0;
 		System.out.print("Iteracao: " + iteracao);
 		
-		while (!parar(pop) && iteracao < 500000) {
+		while (!parar(pop) && iteracao < this.qtdIteracoes) {
 			iteracao++;
 			SolucaoInteira[] pais = selecionarPais(pop);
 			SolucaoInteira[] descendentes = recombinar(pais);
-			
-//			for (int i = 0; i < pais.length; i++) {
-//				System.out.println("Fitness pai: " + pais[i].getFitness());
-//			}
 			
 			for(int i = 0; i < descendentes.length; i++) {
 				descendentes[i] = executarMutacao(descendentes[i]);
@@ -93,7 +100,29 @@ public class GAInteira extends AE<SolucaoInteira> {
 			System.out.print("Iteracao: " + iteracao);
 		}
 		
-	}	
+		// Salva melhores fitness em arquivo CSV
+//		try {
+//			FileManager.writeFile(
+//					"Melhores fitness da execucao.csv", 
+//					"Fitness" + ConstantsValues.CVS_SEPARATOR + "\n", 
+//					false
+//					);
+//			
+//			for (Double melhorFitness : melhoresFitnessPorGeracao) {
+//			
+//			FileManager.writeFile(
+//					"Melhores fitness da execucao.csv", 
+//					melhorFitness + ConstantsValues.CVS_SEPARATOR + "\n", 
+//					true
+//					);
+//			
+//			}
+//			
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			
+//		}
+	}
 	
 	@Override
 	public List<SolucaoInteira> inicializar() {
@@ -127,12 +156,11 @@ public class GAInteira extends AE<SolucaoInteira> {
 
 	@Override
 	public SolucaoInteira[] selecionarPais(List<SolucaoInteira> pop) {
-		SelecaoPorElitismo solucao = new SelecaoPorElitismo();
 		
 		SolucaoInteira[] popIntermediaria = new SolucaoInteira[pop.size()];
 		
 		for(int i = 0; i < pop.size(); i += 2) {
-			List<SolucaoInteira> paisSelecionados =  solucao.selecionar(pop);
+			List<SolucaoInteira> paisSelecionados =  this.operadorSelecaoPais.selecionar(pop);
 			
 //			for (SolucaoInteira solucaoInteira : paisSelecionados) {
 //				System.out.println("Fitness pai selecionado: " + solucaoInteira.getFitness());
@@ -194,7 +222,49 @@ public class GAInteira extends AE<SolucaoInteira> {
 		return operadorMutacao.executarMutacao(pai);
 		
 	}
-	
+
+	/**
+	 * @return the operadorMutacao
+	 */
+	public OperadorMutacao<SolucaoInteira> getOperadorMutacao() {
+		return operadorMutacao;
+	}
+
+	/**
+	 * @param operadorMutacao the operadorMutacao to set
+	 */
+	public void setOperadorMutacao(OperadorMutacao<SolucaoInteira> operadorMutacao) {
+		this.operadorMutacao = operadorMutacao;
+	}
+
+	/**
+	 * @return the operadorCruzamento
+	 */
+	public OperadorRecombinacao<SolucaoInteira> getOperadorCruzamento() {
+		return operadorCruzamento;
+	}
+
+	/**
+	 * @param operadorCruzamento the operadorCruzamento to set
+	 */
+	public void setOperadorCruzamento(OperadorRecombinacao<SolucaoInteira> operadorCruzamento) {
+		this.operadorCruzamento = operadorCruzamento;
+	}
+
+	/**
+	 * @return the operadorSelecaoPais
+	 */
+	public OperadorSelecao<SolucaoInteira> getOperadorSelecaoPais() {
+		return operadorSelecaoPais;
+	}
+
+	/**
+	 * @param operadorSelecaoPais the operadorSelecaoPais to set
+	 */
+	public void setOperadorSelecaoPais(OperadorSelecao<SolucaoInteira> operadorSelecaoPais) {
+		this.operadorSelecaoPais = operadorSelecaoPais;
+	}
+
 	/**
 	 * @return the tamanhoPop
 	 */
@@ -210,17 +280,17 @@ public class GAInteira extends AE<SolucaoInteira> {
 	}
 
 	/**
-	 * @return the operadorMutacao
+	 * @return the qtdIteracoes
 	 */
-	public OperadorMutacao<SolucaoInteira> getOperadorMutacao() {
-		return operadorMutacao;
+	public int getQtdIteracoes() {
+		return qtdIteracoes;
 	}
 
 	/**
-	 * @return the operadorCruzamento
+	 * @param qtdIteracoes the qtdIteracoes to set
 	 */
-	public OperadorRecombinacao<SolucaoInteira> getOperadorCruzamento() {
-		return operadorCruzamento;
+	public void setQtdIteracoes(int qtdIteracoes) {
+		this.qtdIteracoes = qtdIteracoes;
 	}
-
+	
 }

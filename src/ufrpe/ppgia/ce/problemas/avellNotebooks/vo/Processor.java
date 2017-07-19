@@ -141,5 +141,19 @@ public class Processor extends Component {
 			return false;
 		return true;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Processor\n"
+				+ "\tmanufacturer=" + manufacturer + "\n"
+				+ "\tfamily=" + family + "\n"
+				+ "\tmodel=" + model + "\n"
+				+ "\tcacheMemory=" + cacheMemory + "\n"
+				+ "\tmaxFrequency=" + maxFrequency + "\n"
+				+ "\tpriceChanger=" + priceChanger + "\n";
+	}
+	
 	
 }

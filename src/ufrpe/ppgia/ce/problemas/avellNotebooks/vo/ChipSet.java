@@ -97,4 +97,15 @@ public class ChipSet {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ChipSet\n"
+				+ "\tmanufacturer=" + manufacturer + "\n"
+				+ "\tmodel=" + model + "\n";
+	}
+
+	
 }

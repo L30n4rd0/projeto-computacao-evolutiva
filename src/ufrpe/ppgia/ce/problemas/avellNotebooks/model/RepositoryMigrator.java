@@ -445,7 +445,7 @@ public class RepositoryMigrator {
 													for (Office office : notebookModel.getOffices()) {
 														
 														for (WirelessCard wirelessCard : notebookModel.getWirelessCards()) {
-															System.out.println("sdsdsdsd");
+//															System.out.println("sdsdsdsd");
 															notebooks.add (
 																	new NotebookVO(
 																			notebookModel.getNameModel(), 
@@ -833,11 +833,11 @@ public class RepositoryMigrator {
 							
 							StorageMemory tempStorageMemory = getStorageMemoryByJsonObject(storageMemoryJson.getAsJsonObject());
 							
-							System.out.println(storageMemoryJson.getAsJsonObject() + "\n");
+//							System.out.println(storageMemoryJson.getAsJsonObject() + "\n");
 							
 							storageMemories.add(tempStorageMemory);
 							
-							System.out.println(tempStorageMemory.toString() + "\n");
+//							System.out.println(tempStorageMemory.toString() + "\n");
 							
 						}
 					}

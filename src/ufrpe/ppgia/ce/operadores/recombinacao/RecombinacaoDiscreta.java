@@ -11,4 +11,16 @@ public class RecombinacaoDiscreta implements OperadorRecombinacao<SolucaoReal> {
 		return null;
 	}
 
+	@Override
+	public void setPr(double pr) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double getPr() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

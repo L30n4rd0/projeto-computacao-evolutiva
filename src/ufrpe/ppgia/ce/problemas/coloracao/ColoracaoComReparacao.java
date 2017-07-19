@@ -11,7 +11,7 @@ import ufrpe.ppgia.ce.base.AE;
 import ufrpe.ppgia.ce.base.Problema;
 import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
 import ufrpe.ppgia.ce.operadores.mutacao.MutacaoInicializacaoAleatoria;
-import ufrpe.ppgia.ce.operadores.recombinacao.CrossoverUmPontoSolucaoInteira;
+import ufrpe.ppgia.ce.operadores.recombinacao.RecombinacaoCrossoverUmPontoInteira;
 import ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes.SelecaoFPS;
 
 public class ColoracaoComReparacao extends AE<SolucaoInteira> implements Problema<SolucaoInteira> {
@@ -127,7 +127,7 @@ public class ColoracaoComReparacao extends AE<SolucaoInteira> implements Problem
 		SolucaoInteira[] paisEmbaralhados = new SolucaoInteira[pais.length];
 		paisEmbaralhados = paisAux.toArray(paisEmbaralhados);
 		
-		CrossoverUmPontoSolucaoInteira cup = new CrossoverUmPontoSolucaoInteira();
+		RecombinacaoCrossoverUmPontoInteira cup = new RecombinacaoCrossoverUmPontoInteira();
 		cup.setPr(0.7);
 		SolucaoInteira[] filhos = new SolucaoInteira[pais.length];
 		

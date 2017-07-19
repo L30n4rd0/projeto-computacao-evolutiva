@@ -31,7 +31,9 @@ public class Color extends Component {
 	 */
 	@Override
 	public String toString() {
-		return "Color [name=" + name + ", priceChanger=" + priceChanger + "]";
+		return "Color\n"
+				+ "\tname=" + name + "\n"
+				+ "\tpriceChanger=" + priceChanger + "\n";
 	}
 
 	/* (non-Javadoc)

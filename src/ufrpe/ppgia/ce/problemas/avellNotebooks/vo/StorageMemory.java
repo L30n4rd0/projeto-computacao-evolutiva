@@ -68,14 +68,7 @@ public class StorageMemory extends Component {
 		return objectCsvValues;
 		
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "StorageMemory [type=" + type + ", unitMeasure=" + unitMeasure + ", size=" + size + ", priceChanger="
-				+ priceChanger + "]";
-	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -115,5 +108,16 @@ public class StorageMemory extends Component {
 		return true;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "StorageMemory\n"
+				+ "\ttype=" + type + "\n"
+				+ "\tunitMeasure=" + unitMeasure + "\n"
+				+ "\tsize=" + size + "\n"
+				+ "\tpriceChanger="	+ priceChanger + "\n";
+	}
 	
 }

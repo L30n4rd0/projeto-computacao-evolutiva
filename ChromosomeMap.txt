@@ -1,3 +1,23 @@
+**** NEW ****
+GENE	COMPONENT
+0		nameModel
+1		color
+2		operatingSystem
+3		office
+4		processor
+5		ramMemory
+6		screen
+7		storageMemory
+8		secondStorageMemories
+9		firstSATA_eM2
+10		secondSATA_eM2
+11		videoCard
+12		wirelessCard
+
+
+
+
+**** OLD ****
 GENE	COMPONENT
 0		nameModel
 1		productAction

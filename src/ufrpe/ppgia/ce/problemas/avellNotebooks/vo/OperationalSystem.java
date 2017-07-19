@@ -83,5 +83,17 @@ public class OperationalSystem extends Component {
 			return false;
 		return true;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "OperationalSystem\n"
+				+ "\tdescription=" + description + "\n"
+				+ "\tpriceChanger=" + priceChanger + "\n";
+	}
+	
+	
 	
 }

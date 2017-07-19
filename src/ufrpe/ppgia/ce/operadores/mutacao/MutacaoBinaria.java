@@ -21,6 +21,10 @@ public class MutacaoBinaria implements OperadorMutacao<SolucaoBinaria> {
 		return pai;
 	}
 	
+	public double getPm() {
+		return pm;
+	}
+
 	public void setPm(double pm) {
 		this.pm = pm;
 	}

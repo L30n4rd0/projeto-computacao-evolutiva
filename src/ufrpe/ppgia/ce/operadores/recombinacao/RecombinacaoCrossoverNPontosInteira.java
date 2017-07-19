@@ -5,7 +5,7 @@ import java.util.Random;
 import ufrpe.ppgia.ce.base.OperadorRecombinacao;
 import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
 
-public class CrossoverNPontosSolucaoInteira implements OperadorRecombinacao<SolucaoInteira> {
+public class RecombinacaoCrossoverNPontosInteira implements OperadorRecombinacao<SolucaoInteira> {
 
 	private double pr = 1;
 	
@@ -40,5 +40,13 @@ public class CrossoverNPontosSolucaoInteira implements OperadorRecombinacao<Solu
 	public void setPr(double pr) {
 		this.pr = pr;
 	}
+
+	/**
+	 * @return the pr
+	 */
+	public double getPr() {
+		return pr;
+	}
+	
 
 }
