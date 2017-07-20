@@ -11,7 +11,6 @@ import java.util.Map;
 
 import ufrpe.ppgia.ce.base.Problema;
 import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
-import ufrpe.ppgia.ce.operadores.recombinacao.RecombinacaoCrossoverNPontosInteira;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.model.DAOsFactory;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.Color;
 import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.DefaultNotebookModel;
@@ -89,8 +88,8 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 			this.modelsMap.put(notebookModel.getNameModel(), notebookModel);
 		
 //		this.setTamanhoPop(200);
-		((RecombinacaoCrossoverNPontosInteira) this.getOperadorCruzamento()).setPr(0.9);
-//		((MutacaoIncrementosLentos) this.getOperadorMutacao()).setPm(0.5);
+//		this.getOperadorCruzamento().setPr(0.9);
+//		this.getOperadorMutacao().setPm(0.5);
 		
 	}
 
@@ -100,12 +99,6 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 	@Override
 	public List<SolucaoInteira> inicializar() {
 		List<SolucaoInteira> populacao = new ArrayList<>();
-		
-		// Imprimir placas de video
-//		for (VideoCard videoCard : this.videoCards) {
-//			System.out.println(videoCard.getModel() + "# - Sli: " + videoCard.isSli());
-//			
-//		}
 		
 		for (int i = 0; i < this.getTamanhoPop(); i++){
 			SolucaoInteira individuo = new SolucaoInteira(CHROMOSOME_SIZE);
@@ -156,9 +149,23 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 		
 		double melhorFitness = pop.get(0).getFitness();
 		
-		this.melhoresFitnessPorGeracao.add(melhorFitness);
+		NotebookVO notebookAtual = getNotebookByCromossomo(pop.get(0));
 		
-		System.out.println(" - Melhor fitness: " + melhorFitness);
+		if (melhorFitness < getMenorFitness()) {
+			setMenorFitness(melhorFitness);
+			setMelhorNotebook(notebookAtual);
+			
+		} else if (melhorFitness > getMaiorFitness()) {
+			setMaiorFitness(melhorFitness);
+		}		
+		
+//		if (getIndiceAtualSomatorio() < getQtdIteracoes()) {
+			double somatorioAtual = this.somatorioFitnessPorExecucao.get(getIndiceAtualSomatorio());
+			this.somatorioFitnessPorExecucao.set(getIndiceAtualSomatorio(), somatorioAtual + melhorFitness);
+			
+//		}
+		
+//		System.out.println(" - Melhor fitness: " + melhorFitness);
 		
 //		int cont = 1;
 //		for (SolucaoInteira solucaoInteira : pop) {
@@ -167,19 +174,18 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 //			cont++;
 //		}
 		
-		NotebookVO notebookAtual = getNotebookByCromossomo(pop.get(0));
 		
-		System.out.println(notebookAtual == this.notebookOld);
-		
-		System.out.println(notebookAtual.toString() + "\n*********************");
-		
-		System.out.println("Penalizacao ******************");
-		getPenalidade(notebookAtual);
-		System.out.println("Fim ******************");
+//		System.out.println(notebookAtual == this.notebookOld);
+//		
+//		System.out.println(notebookAtual.toString() + "\n*********************");
+//		
+//		System.out.println("Penalizacao ******************");
+//		getPenalidade(notebookAtual);
+//		System.out.println("Fim ******************");
 		
 		this.notebookOld = notebookAtual;
 		
-		return melhorFitness < 6.0;
+		return melhorFitness < 3.0;
 	}
 
 	@Override
@@ -446,76 +452,76 @@ public class AE_avellNotebooks extends GAInteira implements Problema<SolucaoInte
 		// Penalizar cor
 		if (!notebookModel.getColors().contains(notebook.getColor())) {
 			penalidade += peso;
-			System.out.println("Penalizou a cor");
+//			System.out.println("Penalizou a cor");
 			
 		}
 
 		// Penalizar sistema operacional
 		if (!notebookModel.getOperatingSystems().contains(notebook.getOperationalSystem())) {
 			penalidade += peso;
-			System.out.println("Penalizou o SO");
+//			System.out.println("Penalizou o SO");
 		}
 
 		// Penalizar office
 		if (!notebookModel.getOffices().contains(notebook.getOffice())) {
 			penalidade += peso;
-			System.out.println("Penalizou o office");
+//			System.out.println("Penalizou o office");
 		}
 
 		// Penalizar wireless
 		if (!notebookModel.getWirelessCards().contains(notebook.getWirelessCard())) {
 			penalidade += peso;
-			System.out.println("Penalizou a wireless");
+//			System.out.println("Penalizou a wireless");
 		}
 			
 		// Penalizar tela
 		if (!notebookModel.getScreens().contains(notebook.getScreen())) {
 			penalidade += peso;
-			System.out.println("Penalizou a tela");
+//			System.out.println("Penalizou a tela");
 			
 		}
 
 		// Penalizar processador
 		if (!notebookModel.getProcessors().contains(notebook.getProcessor())) {
 			penalidade += peso;
-			System.out.println("Penalizou o processador");			
+//			System.out.println("Penalizou o processador");			
 		}
 
 		// Penalizar RAM
 		if (!notebookModel.getRamMemories().contains(notebook.getRamMemory())) {
 			penalidade += peso;
-			System.out.println("Penalizou a RAM");
+//			System.out.println("Penalizou a RAM");
 		}
 		
 		// Penalizar armazenamento 1
 		if (!notebookModel.getStorageMemories().contains(notebook.getStorageMemory())) {
 			penalidade += peso;
-			System.out.println("Penalizou o armazenamento 1");
+//			System.out.println("Penalizou o armazenamento 1");
 		}
 		
 		// Penalizar armazenamento 2
 		if (!notebookModel.getSecondStorageMemories().contains(notebook.getSecondStorageMemory())) {
 			penalidade += peso;
-			System.out.println("Penalizou o armazenamento 2");
+//			System.out.println("Penalizou o armazenamento 2");
 		}
 
 		// Penalizar primeiro SATAe
 		if (!notebookModel.getFirstSATAS_eM2().contains(notebook.getFirstSATA_eM2())) {
 			penalidade += peso;
-			System.out.println("Penalizou o SATAe 1");
+//			System.out.println("Penalizou o SATAe 1");
 		}
 
 		// Penalizar segundo SATAe
 		if (!notebookModel.getSecondSATAS_eM2().contains(notebook.getSecondSATA_eM2())) {
 			penalidade += peso;
-			System.out.println("Penalizou o SATAe 2");
+//			System.out.println("Penalizou o SATAe 2");
 			
 		}
 
 		// Penalizar placa de vídeo
 		if (!notebookModel.getVideoCards().contains(notebook.getVideoCard())) {
 			penalidade += peso;
-			System.out.println("Penalizou a placa de video");
+//			System.out.println("Penalizou a placa de video");
 		}
 		
 		return penalidade;

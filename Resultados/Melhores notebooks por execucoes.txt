@@ -1,0 +1,536 @@
+*****************************************************************
+Dados de 5000 iteracoes_SelecaoFPS_RecombinacaoCrossoverUmPontoInteira_com PR 0.75_MutacaoIncrementosLentos_com PM 0.03_populacao 50.csv
+Fitness: 9.417171826859132
+Notebook Specification
+	nameModel=Titanium W155 IRON
+	productAction=LANÇAMENTO
+	url=https://avell.com.br/notebooks/titanium-w155-iron
+	width=37.8
+	height=2.49
+	depth=26.7
+	weight=2.5
+Color
+	name=Azul Fosco
+	priceChanger=99.0
+
+Battery
+	cells=6
+	technology=células Smart Lithium-Ion
+
+ChipSet
+	manufacturer=Intel
+	model=HM175
+
+KeyBoard
+	type=Teclado estilo chiclet
+	layout=Padrão Internacional (EUA)
+	lighting=Teclado Retroiluminado (Single Color)
+	gamingKeys=false
+	programmableKeys=false
+	antiGhost=false
+
+OperationalSystem
+	description=Original Windows 10 Home 64bits
+	priceChanger=399.0
+
+Office
+	type=Sem Licença Office
+	priceChanger=0.0
+
+default Price
+	inCash=4499.1
+	creditCard=4999.0
+	discount=10.0
+	installments=12
+
+personalized Price
+	inCash=7.2
+	creditCard=8.0
+	discount=10.0
+	installments=12
+
+Processor
+	manufacturer=Intel
+	family=i7
+	model=7700
+	cacheMemory=8
+	maxFrequency=4.2
+	priceChanger=0.0
+
+RAMMemory
+	type=DDR4
+	frequency=2400.0
+	size=24
+	priceChanger=248.0
+
+Screen
+	inches=17.3
+	technology=FullHD LED-Backlit (Matte)
+	priceChanger=0.0
+
+first StorageMemory
+	type=SSHD SSD
+	unitMeasure=TB
+	size=1
+	priceChanger=0.0
+
+second StorageMemory
+	type=null
+	unitMeasure=null
+	size=0
+	priceChanger=0.0
+
+firstSATA_eM2 StorageMemory
+	type=SSD SATAe M.2
+	unitMeasure=GB
+	size=480
+	priceChanger=742.0
+
+secondSATA_eM2 StorageMemory
+	type=null
+	unitMeasure=null
+	size=0
+	priceChanger=0.0
+
+VideoCard
+	manufacturer=NVIDIA
+	model=GeForce GTX 1080
+	dedicatedMemory=8
+	sli=false
+	priceChanger=-6600.0
+
+WirelessCard
+	manufacturer=Killer
+	model=1535
+	priceChanger=121.0
+
+
+*****************************************************************
+Dados de 5000 iteracoes_SelecaoFPS_RecombinacaoCrossoverUmPontoInteira_com PR 0.75_MutacaoIncrementosLentos_com PM 0.06_populacao 50.csv
+Fitness: 4.859194782009075
+Notebook Specification
+	nameModel=Titanium W155 IRON
+	productAction=LANÇAMENTO
+	url=https://avell.com.br/notebooks/titanium-w155-iron
+	width=37.8
+	height=2.49
+	depth=26.7
+	weight=2.5
+Color
+	name=Branco Fosco
+	priceChanger=99.0
+
+Battery
+	cells=6
+	technology=células Smart Lithium-Ion
+
+ChipSet
+	manufacturer=Intel
+	model=HM175
+
+KeyBoard
+	type=Teclado estilo chiclet
+	layout=Padrão Internacional (EUA)
+	lighting=Teclado Retroiluminado (Single Color)
+	gamingKeys=false
+	programmableKeys=false
+	antiGhost=false
+
+OperationalSystem
+	description=Sem Sistema Operacional
+	priceChanger=0.0
+
+Office
+	type=Microsoft Office 2016 Home & Students (Word, Excel, PowerPoint, OneNote)
+	priceChanger=399.0
+
+default Price
+	inCash=4499.1
+	creditCard=4999.0
+	discount=10.0
+	installments=12
+
+personalized Price
+	inCash=7108.2
+	creditCard=7898.0
+	discount=10.0
+	installments=12
+
+Processor
+	manufacturer=Intel
+	family=i7
+	model=7700HQ
+	cacheMemory=6
+	maxFrequency=3.8
+	priceChanger=300.0
+
+RAMMemory
+	type=DDR4
+	frequency=2133.0
+	size=32
+	priceChanger=465.0
+
+Screen
+	inches=17.3
+	technology=FullHD LED-Backlit (Matte)
+	priceChanger=-425.0
+
+first StorageMemory
+	type=SSD SATA III
+	unitMeasure=GB
+	size=480
+	priceChanger=286.0
+
+second StorageMemory
+	type=SSD SATA III
+	unitMeasure=GB
+	size=480
+	priceChanger=742.0
+
+firstSATA_eM2 StorageMemory
+	type=SSD SATAe M.2
+	unitMeasure=GB
+	size=240
+	priceChanger=456.0
+
+secondSATA_eM2 StorageMemory
+	type=SSD SATAe M.2
+	unitMeasure=GB
+	size=240
+	priceChanger=456.0
+
+VideoCard
+	manufacturer=NVIDIA
+	model=GeForce GTX 1080
+	dedicatedMemory=8
+	sli=true
+	priceChanger=0.0
+
+WirelessCard
+	manufacturer=Killer
+	model=1535
+	priceChanger=121.0
+
+
+*****************************************************************
+Dados de 5000 iteracoes_SelecaoFPS_RecombinacaoCrossoverUmPontoInteira_com PR 0.75_MutacaoIncrementosLentos_com PM 0.1_populacao 50.csv
+Fitness: 6.6737844418664976
+Notebook Specification
+	nameModel=FullRange G1746 IRON V4
+	productAction=LANÇAMENTO
+	url=https://avell.com.br/notebooks/fullrange-g1746-iron-v4
+	width=41.71
+	height=3.0
+	depth=28.7
+	weight=3.2
+Color
+	name=Lilás Fosco
+	priceChanger=99.0
+
+Battery
+	cells=4
+	technology=células Polymer (60WH)
+
+ChipSet
+	manufacturer=Intel
+	model=HM175
+
+KeyBoard
+	type=not specified
+	layout=Padrão Internacional (EUA)
+	lighting=Teclado retroiluminado
+	gamingKeys=true
+	programmableKeys=true
+	antiGhost=false
+
+OperationalSystem
+	description=Original Windows 10 Pro 64bits
+	priceChanger=480.0
+
+Office
+	type=Sem Licença Office
+	priceChanger=0.0
+
+default Price
+	inCash=9499.5
+	creditCard=10555.0
+	discount=10.0
+	installments=12
+
+personalized Price
+	inCash=4935.6
+	creditCard=5484.0
+	discount=10.0
+	installments=12
+
+Processor
+	manufacturer=Intel
+	family=i7
+	model=7700
+	cacheMemory=8
+	maxFrequency=4.2
+	priceChanger=0.0
+
+RAMMemory
+	type=DDR4
+	frequency=2133.0
+	size=8
+	priceChanger=-248.0
+
+Screen
+	inches=15.6
+	technology=FullHD LED-Backlit (Matte)
+	priceChanger=0.0
+
+first StorageMemory
+	type=SSD SATAe M.2
+	unitMeasure=GB
+	size=240
+	priceChanger=0.0
+
+second StorageMemory
+	type=SSHD SSD
+	unitMeasure=TB
+	size=1
+	priceChanger=456.0
+
+firstSATA_eM2 StorageMemory
+	type=null
+	unitMeasure=null
+	size=0
+	priceChanger=0.0
+
+secondSATA_eM2 StorageMemory
+	type=SSD SATAe M.2
+	unitMeasure=GB
+	size=480
+	priceChanger=742.0
+
+VideoCard
+	manufacturer=NVIDIA
+	model=GeForce GTX 1080
+	dedicatedMemory=8
+	sli=false
+	priceChanger=-6600.0
+
+WirelessCard
+	manufacturer=Intel
+	model=3165
+	priceChanger=0.0
+
+
+*****************************************************************
+Dados de 5000 iteracoes_SelecaoFPS_RecombinacaoCrossoverUmPontoInteira_com PR 0.85_MutacaoIncrementosLentos_com PM 0.03_populacao 50.csv
+Fitness: 7.2125555295203565
+Notebook Specification
+	nameModel=Titanium G1545 IRON V4
+	productAction=LANÇAMENTO
+	url=https://avell.com.br/notebooks/titanium-g1545-iron-v4
+	width=38.51
+	height=2.49
+	depth=27.1
+	weight=2.49
+Color
+	name=Azul Fosco
+	priceChanger=0.0
+
+Battery
+	cells=4
+	technology=células Polymer (60WH)
+
+ChipSet
+	manufacturer=Intel
+	model=HM175
+
+KeyBoard
+	type=not specified
+	layout=Padrão Internacional (EUA)
+	lighting=Teclado retroiluminado
+	gamingKeys=true
+	programmableKeys=true
+	antiGhost=false
+
+OperationalSystem
+	description=Original Windows 10 Pro 64bits
+	priceChanger=480.0
+
+Office
+	type=Sem Licença Office
+	priceChanger=0.0
+
+default Price
+	inCash=7199.1
+	creditCard=7999.0
+	discount=10.0
+	installments=12
+
+personalized Price
+	inCash=8517.6
+	creditCard=9464.0
+	discount=10.0
+	installments=12
+
+Processor
+	manufacturer=Intel
+	family=i7
+	model=7700K
+	cacheMemory=8
+	maxFrequency=4.5
+	priceChanger=205.0
+
+RAMMemory
+	type=DDR4
+	frequency=2133.0
+	size=8
+	priceChanger=-248.0
+
+Screen
+	inches=17.3
+	technology=3K QHD 120Hz / 5ms com Tecnologia G-SYNC (Matte)
+	priceChanger=0.0
+
+first StorageMemory
+	type=SSD SATA III
+	unitMeasure=GB
+	size=480
+	priceChanger=286.0
+
+second StorageMemory
+	type=null
+	unitMeasure=null
+	size=0
+	priceChanger=0.0
+
+firstSATA_eM2 StorageMemory
+	type=null
+	unitMeasure=null
+	size=0
+	priceChanger=0.0
+
+secondSATA_eM2 StorageMemory
+	type=SSD SATAe M.2
+	unitMeasure=GB
+	size=480
+	priceChanger=742.0
+
+VideoCard
+	manufacturer=NVIDIA
+	model=GeForce GTX 1080
+	dedicatedMemory=8
+	sli=true
+	priceChanger=0.0
+
+WirelessCard
+	manufacturer=Intel
+	model=3165
+	priceChanger=0.0
+
+
+*****************************************************************
+Dados de 5000 iteracoes_SelecaoFPS_RecombinacaoCrossoverUmPontoInteira_com PR 0.85_MutacaoIncrementosLentos_com PM 0.06_populacao 50.csv
+Fitness: 8.686748703902675
+Notebook Specification
+	nameModel=Titanium W155 IRON
+	productAction=LANÇAMENTO
+	url=https://avell.com.br/notebooks/titanium-w155-iron
+	width=37.8
+	height=2.49
+	depth=26.7
+	weight=2.5
+Color
+	name=Amarelo Fosco
+	priceChanger=99.0
+
+Battery
+	cells=6
+	technology=células Smart Lithium-Ion
+
+ChipSet
+	manufacturer=Intel
+	model=HM175
+
+KeyBoard
+	type=Teclado estilo chiclet
+	layout=Padrão Internacional (EUA)
+	lighting=Teclado Retroiluminado (Single Color)
+	gamingKeys=false
+	programmableKeys=false
+	antiGhost=false
+
+OperationalSystem
+	description=Sem Sistema Operacional
+	priceChanger=0.0
+
+Office
+	type=Microsoft Office 2016 Home & Students (Word, Excel, PowerPoint, OneNote)
+	priceChanger=399.0
+
+default Price
+	inCash=4499.1
+	creditCard=4999.0
+	discount=10.0
+	installments=12
+
+personalized Price
+	inCash=1451.7
+	creditCard=1613.0
+	discount=10.0
+	installments=12
+
+Processor
+	manufacturer=Intel
+	family=i7
+	model=7820HK
+	cacheMemory=8
+	maxFrequency=3.9
+	priceChanger=486.0
+
+RAMMemory
+	type=DDR4
+	frequency=2400.0
+	size=32
+	priceChanger=465.0
+
+Screen
+	inches=17.3
+	technology=FullHD LED-Backlit (Matte)
+	priceChanger=-425.0
+
+first StorageMemory
+	type=SSD SATAe M.2
+	unitMeasure=GB
+	size=240
+	priceChanger=0.0
+
+second StorageMemory
+	type=SSD SATA III
+	unitMeasure=GB
+	size=480
+	priceChanger=742.0
+
+firstSATA_eM2 StorageMemory
+	type=null
+	unitMeasure=null
+	size=0
+	priceChanger=0.0
+
+secondSATA_eM2 StorageMemory
+	type=SSD SATAe M.2
+	unitMeasure=GB
+	size=960
+	priceChanger=1387.0
+
+VideoCard
+	manufacturer=NVIDIA
+	model=GeForce GTX 1080
+	dedicatedMemory=8
+	sli=false
+	priceChanger=-6600.0
+
+WirelessCard
+	manufacturer=Killer
+	model=1535
+	priceChanger=61.0
+
+
+*****************************************************************

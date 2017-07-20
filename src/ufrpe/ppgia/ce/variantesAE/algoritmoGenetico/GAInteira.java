@@ -18,6 +18,7 @@ import ufrpe.ppgia.ce.base.solucao.SolucaoInteira;
 import ufrpe.ppgia.ce.operadores.mutacao.MutacaoIncrementosLentos;
 import ufrpe.ppgia.ce.operadores.recombinacao.RecombinacaoCrossoverNPontosInteira;
 import ufrpe.ppgia.ce.operadores.selecaoDeSobreviventes.SelecaoFPS;
+import ufrpe.ppgia.ce.problemas.avellNotebooks.vo.NotebookVO;
 
 /**
  * @author leonardo
@@ -33,16 +34,20 @@ public class GAInteira extends AE<SolucaoInteira> {
 	/**
 	 * Por padrão a probalidade de cruzamento é 1 
 	 */
-	private OperadorRecombinacao<SolucaoInteira> operadorCruzamento;
+	private OperadorRecombinacao<SolucaoInteira> operadorRecombinacao;
 	
 	private OperadorSelecao<SolucaoInteira> operadorSelecaoPais;
 	
 	/**
 	 * Por padrão o tamanho da população é 100 
 	 */
-	private int tamanhoPop, qtdIteracoes;
+	private int tamanhoPop, qtdIteracoes, qtdExecucoes, indiceAtualSomatorio;
 	
-	protected List<Double> melhoresFitnessPorGeracao;
+	private double menorFitness, maiorFitness;
+	
+	protected List<Double> somatorioFitnessPorExecucao;
+	
+	private NotebookVO melhorNotebook;
 	
 	/**
 	 * 
@@ -52,7 +57,7 @@ public class GAInteira extends AE<SolucaoInteira> {
 		
 		this.operadorMutacao = new MutacaoIncrementosLentos();
 		
-		this.operadorCruzamento = new RecombinacaoCrossoverNPontosInteira();
+		this.operadorRecombinacao = new RecombinacaoCrossoverNPontosInteira();
 		
 		this.operadorSelecaoPais = new SelecaoFPS();
 		
@@ -60,12 +65,23 @@ public class GAInteira extends AE<SolucaoInteira> {
 		
 		this.qtdIteracoes = 1000;
 		
-		this.melhoresFitnessPorGeracao = new ArrayList<>();
+		this.qtdExecucoes = 100;
+		
+		this.menorFitness = 10000.0;
+		
+		this.maiorFitness = 0.0;
+		
+		this.indiceAtualSomatorio = 0;
+		
+		this.somatorioFitnessPorExecucao = new ArrayList<>();
+		
+		this.melhorNotebook = null;
 		
 	}
 
 	@Override
 	public void executar() {
+		this.indiceAtualSomatorio = 0;
 		List<SolucaoInteira> pop = inicializar();
 		
 		for (SolucaoInteira individuo : pop) {
@@ -73,10 +89,11 @@ public class GAInteira extends AE<SolucaoInteira> {
 		}
 		
 		int iteracao = 0;
-		System.out.print("Iteracao: " + iteracao);
+//		System.out.print("Iteracao: " + iteracao);
 		
-		while (!parar(pop) && iteracao < this.qtdIteracoes) {
+		while (iteracao < this.qtdIteracoes && !parar(pop)) {
 			iteracao++;
+			this.indiceAtualSomatorio++;
 			SolucaoInteira[] pais = selecionarPais(pop);
 			SolucaoInteira[] descendentes = recombinar(pais);
 			
@@ -97,7 +114,7 @@ public class GAInteira extends AE<SolucaoInteira> {
 //				System.out.println("\n");
 //			}
 			
-			System.out.print("Iteracao: " + iteracao);
+//			System.out.print("Iteracao: " + iteracao);
 		}
 		
 		// Salva melhores fitness em arquivo CSV
@@ -208,7 +225,7 @@ public class GAInteira extends AE<SolucaoInteira> {
 		SolucaoInteira[] filhos = new SolucaoInteira[pais.length];
 		
 		for(int i = 0; i < paisEmbaralhados.length; i += 2) {
-			SolucaoInteira[] filhosDaVez = operadorCruzamento.recombinar(paisEmbaralhados[i], paisEmbaralhados[i + 1]);
+			SolucaoInteira[] filhosDaVez = operadorRecombinacao.recombinar(paisEmbaralhados[i], paisEmbaralhados[i + 1]);
 			filhos[i] = filhosDaVez[0];
 			filhos[i + 1] = filhosDaVez[1];
 		}
@@ -220,6 +237,20 @@ public class GAInteira extends AE<SolucaoInteira> {
 	public SolucaoInteira executarMutacao(SolucaoInteira pai) {
 		
 		return operadorMutacao.executarMutacao(pai);
+		
+	}
+	
+	public void resetResultadosDaExecucao() {
+		this.somatorioFitnessPorExecucao.clear();
+		this.indiceAtualSomatorio = 0;
+		this.menorFitness = 10000.0;
+		this.maiorFitness = 0.0;
+		this.melhorNotebook = null;
+		
+		for (int i = 0; i < this.qtdIteracoes; i++) {
+			this.somatorioFitnessPorExecucao.add(0.0);
+			
+		}
 		
 	}
 
@@ -238,17 +269,17 @@ public class GAInteira extends AE<SolucaoInteira> {
 	}
 
 	/**
-	 * @return the operadorCruzamento
+	 * @return the operadorRecombinacao
 	 */
-	public OperadorRecombinacao<SolucaoInteira> getOperadorCruzamento() {
-		return operadorCruzamento;
+	public OperadorRecombinacao<SolucaoInteira> getOperadorRecombinacao() {
+		return operadorRecombinacao;
 	}
 
 	/**
-	 * @param operadorCruzamento the operadorCruzamento to set
+	 * @param operadorRecombinacao the operadorCruzamento to set
 	 */
-	public void setOperadorCruzamento(OperadorRecombinacao<SolucaoInteira> operadorCruzamento) {
-		this.operadorCruzamento = operadorCruzamento;
+	public void setOperadorRecombinacao(OperadorRecombinacao<SolucaoInteira> operadorRecombinacao) {
+		this.operadorRecombinacao = operadorRecombinacao;
 	}
 
 	/**
@@ -292,5 +323,99 @@ public class GAInteira extends AE<SolucaoInteira> {
 	public void setQtdIteracoes(int qtdIteracoes) {
 		this.qtdIteracoes = qtdIteracoes;
 	}
+
+	/**
+	 * @return the qtdExecucoes
+	 */
+	public int getQtdExecucoes() {
+		return qtdExecucoes;
+	}
+
+	/**
+	 * @param qtdExecucoes the qtdExecucoes to set
+	 */
+	public void setQtdExecucoes(int qtdExecucoes) {
+		this.qtdExecucoes = qtdExecucoes;
+	}
+
+	/**
+	 * @return the melhoresFitnessPorGeracao
+	 */
+	public List<Double> getMelhoresFitnessPorGeracao() {
+		return somatorioFitnessPorExecucao;
+	}
+
+	/**
+	 * @return the menorFitness
+	 */
+	public double getMenorFitness() {
+		return menorFitness;
+	}
+
+	/**
+	 * @param menorFitness the menorFitness to set
+	 */
+	public void setMenorFitness(double menorFitness) {
+		this.menorFitness = menorFitness;
+	}
+
+	/**
+	 * @return the maiorFitness
+	 */
+	public double getMaiorFitness() {
+		return maiorFitness;
+	}
+
+	/**
+	 * @param maiorFitness the maiorFitness to set
+	 */
+	public void setMaiorFitness(double maiorFitness) {
+		this.maiorFitness = maiorFitness;
+	}
+
+	/**
+	 * @return the somatorioFitnessPorExecucao
+	 */
+	public List<Double> getSomatorioFitnessPorExecucao() {
+		return somatorioFitnessPorExecucao;
+	}
+
+	/**
+	 * @param somatorioFitnessPorExecucao the somatorioFitnessPorExecucao to set
+	 */
+	public void setSomatorioFitnessPorExecucao(List<Double> somatorioFitnessPorExecucao) {
+		this.somatorioFitnessPorExecucao = somatorioFitnessPorExecucao;
+	}
+
+	/**
+	 * @return the fitnessAtualSomatorio
+	 */
+	public int getIndiceAtualSomatorio() {
+		return indiceAtualSomatorio;
+	}
+
+	/**
+	 * @param fitnessAtualSomatorio the fitnessAtualSomatorio to set
+	 */
+	public void setIndiceAtualSomatorio(int fitnessAtualSomatorio) {
+		this.indiceAtualSomatorio = fitnessAtualSomatorio;
+	}
+
+	/**
+	 * @return the melhorNotebook
+	 */
+	public NotebookVO getMelhorNotebook() {
+		return melhorNotebook;
+	}
+
+	/**
+	 * @param melhorNotebook the melhorNotebook to set
+	 */
+	public void setMelhorNotebook(NotebookVO melhorNotebook) {
+		this.melhorNotebook = melhorNotebook;
+	}
+	
+	
+	
 	
 }
