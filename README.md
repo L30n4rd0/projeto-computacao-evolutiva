@@ -14,30 +14,3 @@ A Avell é uma empresa brasileira fundada no ano 2000 e tem atuação principal 
 
 Para mais detalhes veja o [Relatório Computação Evolutiva](Relatorio_Computacao_Evolutiva_-_Leonardo_Souza.pdf) presente na pasta do projeto.
 
-<!--
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
--->
