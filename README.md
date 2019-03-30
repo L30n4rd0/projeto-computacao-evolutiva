@@ -1,6 +1,6 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Projeto desenvolvido na cadeira de Computação Evolutiva - CE, ministrada pelo Professor Dr. Danilo R. B. de Araújo, no Programa de Pós-Graduação em Informática Aplicada - PPGIA, na Universidade Federal Rural de Pernambuco - UFRPE.
 
 ### What is this repository for? ###
 
